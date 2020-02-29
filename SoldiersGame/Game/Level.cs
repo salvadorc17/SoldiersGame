@@ -1,0 +1,196 @@
+﻿using System;
+using System.Collections.Generic;
+using SoldierTactics.Engine;
+using System.Xml.Serialization;
+using System.IO;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using SoldiersGame;
+
+namespace SoldierTactics.Game
+{
+    public class Level
+    {
+        public int ID;
+        public string Name;
+        public bool Debug;
+        public Sprite Background;
+        public Map Map;
+        public GameObject Dummy;
+        public List<GameObject> Objects;
+        public List<Enemy> Enemies;
+        public List<Vehicle> Vehicles;
+        public Player Player;
+        private Single Gametime;
+
+        public Level(int id, string name, ContentManager content)
+             {
+
+                 ID = id;
+                 Name = name;
+                 XmlSerializer ax = new XmlSerializer(typeof(Map));
+
+
+                Stream file = TitleContainer.OpenStream("Content/Levels/" + id + ".xml");
+
+                 Map = (Map)ax.Deserialize(file);
+
+                 Background = new Sprite(Config.BGDIR + Map.Background, content);
+                 Enemies = new List<Enemy>();
+                 Objects = new List<GameObject>();
+                 Vehicles = new List<Vehicle>();
+
+                foreach (Entity entity in Map.entities)
+                    if (entity != null)
+                    {
+                        switch (entity.Type)
+                        {
+
+                        case EntityType.None:
+
+                            //Do nothing
+
+                            break;
+
+                        case EntityType.Player:
+
+                            Player = new Game.Player(entity.ID, entity.Name, "Player1", entity.X, entity.Y, content);
+
+                            break;
+
+                        case EntityType.Object:
+
+                            ObjectType otype = ObjectType.Static;
+
+                                Objects.Add(new GameObject(entity.ID, entity.Name, entity.X, entity.Y, otype, 1, content));
+
+                            break;
+
+                        case EntityType.Vehicle:
+
+
+                            Vehicles.Add(new Vehicle(entity.ID, entity.Name, entity.X, entity.Y, content));
+
+                            break;
+
+                        case EntityType.Enemy:
+
+
+                            Enemies.Add(new Enemy(entity.ID, entity.Name, entity.X, entity.Y, entity.Route, entity.RType, content));
+
+                            break;
+
+                    }
+
+                }
+
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+
+            // Process passing time.
+            Gametime += 1;
+            if (Gametime > 4)
+            {
+
+                Gametime = 0;
+
+          
+
+                if (Objects != null)
+                for (int i = 0; i <= Objects.Count - 1; i++)
+                    if (Objects[i] != null)
+                        Objects[i].Update(gameTime);
+
+                if (Enemies != null)
+                for (int i = 0; i <= Enemies.Count - 1; i++)
+                    if (Enemies[i] != null)
+                        Enemies[i].Update(gameTime);
+
+                if (Vehicles != null)
+                for (int i = 0; i <= Vehicles.Count - 1; i++)
+                    if (Vehicles[i] != null)
+                        Vehicles[i].Update(gameTime);
+
+                Input.GetInput();
+
+                if (Player != null)
+                {
+
+
+                    if (Input.IsKeyDown(Keys.Right))
+                    {
+
+                        Player.RightDown = true;
+                        Player.LeftDown = false;
+                        Player.State = 1;
+
+
+                    }
+
+
+                    else if (Input.IsKeyDown(Keys.Left))
+                    {
+
+                        Player.LeftDown = true;
+                        Player.RightDown = false;
+                        Player.State = 1;
+
+
+                    }
+
+                    else
+                    {
+                        Player.LeftDown = false;
+                        Player.RightDown = false;
+
+                        Player.State = 0;
+
+                    }
+
+
+                    Player.Update(gameTime);
+
+                }
+            }
+
+        }
+
+
+        public void Draw(SpriteBatch SpriteBatch)
+        {
+
+            Global.SpriteBatch = SpriteBatch;
+
+            if (Background.Image != null)
+
+                SpriteBatch.Draw(Background.Image, new Rectangle(0, 0, (int)Global.ScreenWidth, (int)Global.ScreenHeight), Color.White);
+
+            if (Objects != null)
+                for (int i = 0; i <= Objects.Count - 1; i++)
+                    if (Objects[i] != null)
+                        Objects[i].Draw();
+
+            if (Enemies != null)
+                for (int i = 0; i <= Enemies.Count - 1; i++)
+                    if (Enemies[i] != null)
+                        Enemies[i].Draw();
+
+
+
+            if (Vehicles != null)
+                for (int i = 0; i <= Vehicles.Count - 1; i++)
+                    if (Vehicles[i] != null)
+                        Vehicles[i].Draw();
+
+            if (Player != null)
+                Player.Draw();
+
+        }
+
+    }
+}
