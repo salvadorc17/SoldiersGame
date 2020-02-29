@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Content;
 using SoldierTactics;
+using System.IO;
 
 namespace SoldiersGame
 {
@@ -86,8 +87,8 @@ public class ScreenManager : DrawableGameComponent
         ContentManager content = Game.Content;
 
         m_spriteBatch = new SpriteBatch(GraphicsDevice);
-        m_font = content.Load<SpriteFont>("Fonts\\Menu");
-        blankTexture = content.Load<Texture2D>("Interface\\blank");
+        m_font = content.Load<SpriteFont>("Fonts" + Path.DirectorySeparatorChar + "Menu");
+        blankTexture = content.Load<Texture2D>("Textures" + Path.DirectorySeparatorChar + "blank");
 
         // Tell each of the screens to load their content.
         foreach (GameScreen screen in screens)

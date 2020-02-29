@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace SoldierTactics
 {
    public static class Config
     {
-        public static string GAMEDIR = "";
-        public static string BGDIR = GAMEDIR + "Interface/Background/";
-        public static string SPRITEDIR = GAMEDIR + "Sprites/";
+        public static string GAMEDIR = "Content";
+        public static string DATOSDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS";
+        public static string MUSICDIR = "DATOS" + Path.DirectorySeparatorChar + "MUSICA";
+        public static string SOUNDDIR = DATOSDIR + Path.DirectorySeparatorChar + "SONIDO" + Path.DirectorySeparatorChar + "WAVE";
+        public static string BGDIR = GAMEDIR + Path.DirectorySeparatorChar + "Textures";
+        public static string SPRITEDIR = GAMEDIR + Path.DirectorySeparatorChar + "Sprites";
         public const int FPS = 1000 / 30;
         public const short SCREEN_WIDTH = 640;
         public const short SCREEN_HEIGHT = 480;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SoldierTactics;
 
 namespace SoldiersGame
 {
@@ -11,11 +12,22 @@ namespace SoldiersGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        ScreenManager screenManager;
 
         public SoldiersGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth = Config.SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = Config.SCREEN_HEIGHT;
+
+
+            screenManager = new ScreenManager(this, graphics, Services, Content);
+            Components.Add(screenManager);
+
+            screenManager.AddScreen(new BackgroundScreen(), PlayerIndex.One);
+            screenManager.AddScreen(new MainMenuScreen(), PlayerIndex.One);
+
         }
 
         /// <summary>
