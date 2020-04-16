@@ -5,6 +5,8 @@ using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using SoldiersGame;
+using System.IO;
 
 
 namespace SoldierTactics
@@ -29,7 +31,12 @@ namespace SoldierTactics
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             }
 
-            backgroundTexture = content.Load<Texture2D>("Interface\\Menu");
+            backgroundTexture = ImageManager.LoadTexture(ScreenManager.GraphicsDevice, Config.SYSDIR + Path.DirectorySeparatorChar + "MISC" +
+                Path.DirectorySeparatorChar + "MENU800.BMP");
+
+            Texture2D text = ImageManager.ImageFromWADArchive(ScreenManager.GraphicsDevice, Config.SYSDIR + Path.DirectorySeparatorChar + "CARAS" +
+                Path.DirectorySeparatorChar + "COMANDOS.WAD");
+
         }
 
 
