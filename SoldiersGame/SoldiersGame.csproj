@@ -48,6 +48,16 @@
     <Compile Include="Engine\Sound.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\Vector.cs" />
+    <Compile Include="GameFormats\BMP.cs" />
+    <Compile Include="GameFormats\DIR.cs" />
+    <Compile Include="GameFormats\MapPolygon.cs" />
+    <Compile Include="GameFormats\MapTile.cs" />
+    <Compile Include="GameFormats\Point.cs" />
+    <Compile Include="GameFormats\RLE.cs" />
+    <Compile Include="GameFormats\VOL.cs" />
+    <Compile Include="GameFormats\WAD.cs" />
+    <Compile Include="GameFormats\WADImage.cs" />
+    <Compile Include="GameFormats\WADImagePixel.cs" />
     <Compile Include="GameManager\ImageManager.cs" />
     <Compile Include="GameManager\SoundManager.cs" />
     <Compile Include="Game\Enemy.cs" />
