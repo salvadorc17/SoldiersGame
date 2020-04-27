@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using SoldiersGame;
 using SoldierTactics.Game;
-using SoldierTactics.Engine;
+
 
 namespace SoldierTactics
 {
@@ -37,49 +37,7 @@ namespace SoldierTactics
 
         }
 
-        public List<Sprite> GenerateFloors()
-        {
-            List<Sprite> TerrainSprites = new List<Sprite>();
 
-
-            if (Terrain.Floors.Count > 0)
-                for (int i = 0; i < Terrain.Floors.Count; i++)
-                {
-
-                    Sprite spr = Terrain.GetSprite(0, i);
-
-
-                    TerrainSprites.Add(spr);
-
-
-                }
-
-            return TerrainSprites;
-
-
-        }
-
-        public List<Sprite> GenerateWalls()
-        {
-            List<Sprite> TerrainSprites = new List<Sprite>();
-
-
-            if (Terrain.Walls.Count > 0)
-                for (int i = 0; i < Terrain.Walls.Count; i++)
-                {
-
-                    Sprite spr = Terrain.GetSprite(0, i);
-
-
-                    TerrainSprites.Add(spr);
-
-
-                }
-
-            return TerrainSprites;
-
-
-        }
 
 
         public void Serialize(String path, Map map)

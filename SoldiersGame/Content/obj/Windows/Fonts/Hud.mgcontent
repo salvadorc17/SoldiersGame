@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/Fonts/Hud.spritefont</SourceFile>
+  <SourceTime>2018-06-05T16:54:28.9550681-05:00</SourceTime>
+  <DestFile>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/bin/Windows/Fonts/Hud.xnb</DestFile>
+  <DestTime>2020-02-29T18:48:46.6438344-05:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2017-03-01T10:05:36-05:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

@@ -48,28 +48,15 @@
     <Compile Include="Engine\Sound.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\Vector.cs" />
-    <Compile Include="GameFormats\BMP.cs" />
-    <Compile Include="GameFormats\DIR.cs" />
-    <Compile Include="GameFormats\MapPolygon.cs" />
-    <Compile Include="GameFormats\MapTile.cs" />
-    <Compile Include="GameFormats\Point.cs" />
-    <Compile Include="GameFormats\RLE.cs" />
-    <Compile Include="GameFormats\VOL.cs" />
-    <Compile Include="GameFormats\WAD.cs" />
-    <Compile Include="GameFormats\WADImage.cs" />
-    <Compile Include="GameFormats\WADImagePixel.cs" />
     <Compile Include="GameManager\ImageManager.cs" />
     <Compile Include="GameManager\SoundManager.cs" />
     <Compile Include="Game\Camera.cs" />
     <Compile Include="Game\Enemy.cs" />
-    <Compile Include="Game\Entity.cs" />
     <Compile Include="Game\FieldView.cs" />
     <Compile Include="Game\GameObject.cs" />
     <Compile Include="Game\Level.cs" />
-    <Compile Include="Game\Map.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Route.cs" />
-    <Compile Include="Game\Terrain.cs" />
     <Compile Include="Game\Vehicle.cs" />
     <Compile Include="GameManager\GameScreen.cs" />
     <Compile Include="GameManager\InputState.cs" />
@@ -92,8 +79,10 @@
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Windows\x86\Debug\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -104,6 +93,12 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.config" />
     <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SoldiersLib\SoldiersLib.csproj">
+      <Project>{994efa07-1020-4d0c-bb5f-344bf4380180}</Project>
+      <Name>SoldiersLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

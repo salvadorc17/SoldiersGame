@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SoldiersGame;
+using SoldierTactics.GameFormats;
 
 namespace SoldierTactics.Engine
 {
@@ -14,6 +15,7 @@ namespace SoldierTactics.Engine
     public class Sprite
     {
         public String Name { get; set; }
+        public Bitmap Bitmap { get; set; }
         public Texture2D Image {get; set;}
         public int Width { get; set; }
         public int Height { get; set; }
@@ -91,6 +93,7 @@ namespace SoldierTactics.Engine
             this.xOrigin = xorigin;
             this.yOrigin = yorigin;
         }
+  
 
 
         public List<Sprite> Split(int widthTile, int heightTile)

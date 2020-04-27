@@ -30,7 +30,9 @@ namespace SoldierTactics.GameFormats
             }
         }
 
-        public string Path;
+        public string Name;
+
+        public string Folder;
 
         public int PaletteSize = 512 + 13;
         /* WAD File format:
@@ -48,10 +50,11 @@ namespace SoldierTactics.GameFormats
 
         public WAD(string path)
         {
-            Path = path;
+            Folder = path;
 
+            Name = Path.GetFileName(path);
 
-            if (Path != null)
+            if (Folder != null)
                 Extract();
 
 
@@ -61,14 +64,14 @@ namespace SoldierTactics.GameFormats
         public void Extract()
         {
             images = new List<WADImage>();
-            if (!File.Exists(Path))
+            if (!File.Exists(Folder))
             {
-                Trace.WriteLine("WAD: The file " + Path + " does not exist!");
+                Trace.WriteLine("WAD: The file " + Folder + " does not exist!");
                 
             }
-            var fs = new FileStream(Path, FileMode.Open, FileAccess.Read);
+            var fs = new FileStream(Folder, FileMode.Open, FileAccess.Read);
             var br = new BinaryReader(fs);
-            var bytes = br.ReadBytes((int)(new FileInfo(Path).Length));
+            var bytes = br.ReadBytes((int)(new FileInfo(Folder).Length));
             br.Close();
             fs.Close();
             if (bytes.Length < 400 + 4 + 512 + 13 + 4)
@@ -76,7 +79,7 @@ namespace SoldierTactics.GameFormats
                 Trace.WriteLine("WAD: File too small!");
                 
             }
-            Trace.WriteLine("WAD: Reading file '" + Path + "'");
+            Trace.WriteLine("WAD: Reading file '" + Folder + "'");
             // Read color palette count:
             int paletteCnt = (bytes[400] | bytes[401] << 8 | bytes[402] << 16 | bytes[403] << 24);
             Trace.WriteLine("WAD: Palette count: " + paletteCnt);

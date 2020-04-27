@@ -5,7 +5,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SoldierTactics;
 using SoldierTactics.GameFormats;
-
+using SoldierTactics.Engine;
+using System.Drawing;
 
 namespace SoldiersGame
 {
@@ -81,6 +82,7 @@ namespace SoldiersGame
 
             Texture2D texture = new Texture2D(GraphicsDevice, 0, 0);
 
+
             if (WADImages.Count > 0)
             {
 
@@ -88,8 +90,8 @@ namespace SoldiersGame
                 WAD wad = WADImages[id];
                 WADImage img = wad.Images[value];
 
-                if ( img.RawDataSize > 0)
-                     texture.SetData<byte>(img.RawData);
+                texture = ImageFromStream(img);
+
 
             }
 
@@ -98,10 +100,11 @@ namespace SoldiersGame
 
         }
 
-        public static Texture2D ImageFromWADArchive(int id, string name)
-       {
 
-           Texture2D texture = new Texture2D(GraphicsDevice, 0, 0);
+        public static Texture2D ImageFromWADArchive(int id, string name)
+        {
+
+            Texture2D texture = new Texture2D(GraphicsDevice, 0, 0);
 
             if (WADImages.Count > 0)
             {
@@ -115,9 +118,48 @@ namespace SoldiersGame
             }
 
 
-           return texture;
+            return texture;
 
-       }
+        }
+
+        public static Texture2D ImageFromStream(WADImage image)
+        {
+            Texture2D Image = new Texture2D(GraphicsDevice, (int)image.Width, (int)image.Height);
+
+            Image = Texture2D.FromStream(GraphicsDevice, GetBitmapStream(image));
+
+            return Image;
+        }
+
+
+        public static Stream GetBitmapStream(WADImage img)
+        {
+            Bitmap Bmp = GetBitmap(img);
+
+
+            MemoryStream Stream = new MemoryStream();
+            //var Stream = File.OpenWrite("image.bmp");
+            Bmp.Save(Stream, System.Drawing.Imaging.ImageFormat.Png);
+
+
+            return Stream;
+
+
+        }
+
+        public static Bitmap GetBitmap(WADImage image)
+        {
+            Bitmap b = new Bitmap((int)image.Width, (int)image.Height);
+            for (int h = 0; h < image.Height; ++h)
+                for (int w = 0; w < image.Width; ++w)
+                {
+                    var pix = image.Pixels[h, w];
+                    b.SetPixel(w, h, System.Drawing.Color.FromArgb(pix.Opacity, pix.R, pix.G, pix.B));
+                }
+            return b;
+        }
+
+
     }
 
 }

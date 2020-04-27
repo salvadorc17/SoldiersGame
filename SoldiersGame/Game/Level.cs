@@ -48,9 +48,9 @@ namespace SoldierTactics.Game
                     ImageManager.LoadWad(1, Map.WadMap);
 
 
-                    Floors = Map.GenerateFloors();
+                    Floors = GenerateFloors();
 
-                    Walls = Map.GenerateWalls();
+                    Walls = GenerateWalls();
 
 
 
@@ -183,6 +183,77 @@ namespace SoldierTactics.Game
 
         }
 
+        public List<Sprite> GenerateFloors()
+        {
+            List<Sprite> TerrainSprites = new List<Sprite>();
+
+
+            if (Map.Terrain.Floors.Count > 0)
+                for (int i = 0; i < Map.Terrain.Floors.Count; i++)
+                {
+
+                    Sprite spr = GetSprite(0, i);
+
+
+                    TerrainSprites.Add(spr);
+
+
+                }
+
+            return TerrainSprites;
+
+
+        }
+
+        public List<Sprite> GenerateWalls()
+        {
+            List<Sprite> TerrainSprites = new List<Sprite>();
+
+
+            if (Map.Terrain.Walls.Count > 0)
+                for (int i = 0; i <  Map.Terrain.Walls.Count; i++)
+                {
+
+                    Sprite spr = GetSprite(0, i);
+
+
+                    TerrainSprites.Add(spr);
+
+
+                }
+
+            return TerrainSprites;
+
+
+        }
+
+        public Sprite GetSprite(int type, int id)
+        {
+            Sprite sprite = new Sprite();
+
+            //Floor sprite
+            if (type == 0)
+            {
+
+                sprite = new Sprite(
+                ImageManager.ImageFromWADArchive(0, Map.Terrain.Floors[id].Value));
+
+
+            }
+            //Wall sprite
+            else if (type == 1)
+            {
+
+                sprite = new Sprite(
+                ImageManager.ImageFromWADArchive(0, Map.Terrain.Walls[id].Value));
+
+
+            }
+
+            return sprite;
+
+        }
+
 
         public void Draw(SpriteBatch SpriteBatch)
         {
@@ -192,7 +263,7 @@ namespace SoldierTactics.Game
             
 
             if (Map != null && Map.Terrain.Floors.Count > 0)
-                for (int i = 0; i <= Map.Terrain.Floors.Count; i++)
+                for (int i = 0; i < Map.Terrain.Floors.Count; i++)
                 {
 
                     int value = ImageManager.WADImages[0].Files;

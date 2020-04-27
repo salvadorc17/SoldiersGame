@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/Fonts/Hud.spritefont</File>
+    <File>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/Fonts/Menu.spritefont</File>
+    <File>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/Textures/Bounds.png</File>
+    <File>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/Textures/blank.png</File>
+    <File>C:/Users/Santiago/Documents/Visual Studio 2010/Projects/SoldiersGame/SoldiersGame/Content/Textures/gradient.png</File>
+  </SourceFiles>
+</SourceFileCollection>

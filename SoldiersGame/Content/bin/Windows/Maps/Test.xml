@@ -7,12 +7,8 @@
   <terrain>
     <floors>
       <floor x="0" y="0" z="0" value="0" />
-	  <floor x="100" y="100" z="0" value="1" />
+	  <floor x="0" y="10" z="0" value="0" />
     </floors>
-	<walls>
-      <wall x="0" y="0" z="0" value="1" />
-	  <wall x="0" y="10" z="0" value="2" />
-    </walls>
   </terrain>
   <entities>
     <entity name="" x="0" y="0" z="0" dir="0" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using SoldierTactics.Engine;
+
 
 namespace SoldiersGame
 {
@@ -31,32 +31,6 @@ namespace SoldiersGame
 
         }
 
-        public Sprite GetSprite(int type, int id)
-        {
-            Sprite sprite = new Sprite();
-
-            //Floor sprite
-            if (type == 0)
-            {
-
-                sprite = new Sprite(
-                ImageManager.ImageFromWADArchive(0, Floors[id].Value));
-
-
-            }
-            //Wall sprite
-            else if (type == 1)
-            {
-
-               sprite = new Sprite(
-               ImageManager.ImageFromWADArchive(0, Walls[id].Value));
-            
-
-            }
-
-            return sprite;
-
-        }
 
     }
 
