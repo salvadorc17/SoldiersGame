@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 using SoldierTactics.Game;
 using SoldiersGame;
 
+
 namespace SoldierTactics
 {
 
@@ -18,12 +19,11 @@ namespace SoldierTactics
 
 
         private SpriteFont hudFont;
-        private Texture2D winOverlay;
-        private Texture2D loseOverlay;
-        private Texture2D diedOverlay;
         private Level Level;
         private int LevelIndex;
 
+        private Camera Camera;
+       
         private float pauseAlpha;
         // Meta-Maze game state.
 
@@ -40,10 +40,12 @@ namespace SoldierTactics
 
 
 
-		public GameplayScreen()
+		public GameplayScreen(ScreenManager screenManager)
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
+
+            screenManager.Game.ResetElapsedTime();
 
 
         }
@@ -54,24 +56,25 @@ namespace SoldierTactics
         public override void LoadContent()
         {
 
-            // A real game would probably have more content than this sample, so
-            // it would take longer to load. We simulate that by delaying for a
-            // while, giving you a chance to admire the beautiful loading screen.
-
-            // once the load has finished, we use ResetElapsedTime to tell the game's
-            // timing mechanism that we have just finished a very long frame, and that
-            // it should not try to catch up.
-            ScreenManager.Game.ResetElapsedTime();
 
             hudFont = ScreenManager.content.Load<SpriteFont>("Fonts/Hud");
 
-            // Load overlay textures
-            winOverlay = ScreenManager.content.Load<Texture2D>("Interface/Win");
-            loseOverlay = ScreenManager.content.Load<Texture2D>("Interface/Lose");
-            diedOverlay = ScreenManager.content.Load<Texture2D>("Interface/Die");
 
-            Level = new Level(LevelIndex, "Start", ScreenManager.content);
-           
+            Level = new Level(LevelIndex, "Test", ScreenManager.content);
+
+            Camera = new Camera(Level.Map.Width, Level.Map.Height,
+                 ScreenManager.GraphicsDevice.Viewport.Width, ScreenManager.GraphicsDevice.Viewport.Height);
+
+            Level.CameraPos = new Vector2(0, 0);
+
+
+
+            Camera.setX((int)Level.CameraPos.X);
+            Camera.setY((int)Level.CameraPos.Y);
+
+
+            Camera.Pan(Level.CameraPos);
+
 
         }
 
@@ -179,7 +182,7 @@ namespace SoldierTactics
         private void DrawHud(SpriteBatch spriteb)
         {
             
-            Rectangle titleSafeArea = new Rectangle(100,100, 640, 200);
+            Rectangle titleSafeArea = new Rectangle(10,10, 640, 200);
             Vector2 hudLocation = new Vector2(titleSafeArea.X, titleSafeArea.Y);
             Vector2 center = new Vector2(titleSafeArea.X + titleSafeArea.Width / 2f, titleSafeArea.Y + titleSafeArea.Height / 2f);
 

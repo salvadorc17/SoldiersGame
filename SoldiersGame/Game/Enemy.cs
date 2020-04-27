@@ -21,8 +21,11 @@ namespace SoldierTactics.Game
         public Vector Position;
         public Point[] ViewField;
         public bool MoveRoute, Alive;
+        public EntityType Type { get; set; }
+        public bool Route { get; set; }
+        public RouteType RType { get; set; }
 
-         public Enemy(int id, string name, int x, int y, bool route, RouteType type, ContentManager content)
+        public Enemy(int id, string name, int x, int y, bool route, RouteType type, ContentManager content)
              {
                  ID = id;
                  Name = name;
@@ -31,6 +34,9 @@ namespace SoldierTactics.Game
                  Position = new Vector(x, y);
                  MoveRoute = route;
                  Alive = true;
+            Type = EntityType.None;
+            RType = RouteType.None;
+
 
             Animations = new Animation[10];
             ViewField = new Point[4];

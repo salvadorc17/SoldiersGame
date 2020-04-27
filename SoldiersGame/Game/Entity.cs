@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Xml.Serialization;
 
 namespace SoldierTactics.Game
 {
@@ -9,22 +9,48 @@ namespace SoldierTactics.Game
 
    public class Entity
     {
+        [XmlAttribute("id")]
         public int ID { get; set; }
-        public string Name { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public EntityType Type { get; set; }
-        public bool Route { get; set; }
-        public RouteType RType { get; set; }
 
-       public Entity()
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+
+        [XmlAttribute("x")]
+        public int X { get; set; }
+
+        [XmlAttribute("y")]
+        public int Y { get; set; }
+
+        [XmlAttribute("z")]
+        public int Z { get; set; }
+
+        [XmlAttribute("dir")]
+        public int Dir { get; set; }
+
+        public Entity()
         {
             X = 0;
             Y = 0;
-            Type = EntityType.None;
-            RType = RouteType.None;
+            Z = 0;
+            Dir = 0;
 
         }
+
+        public EntityType GetEntityType()
+        {
+
+            EntityType type = EntityType.None;
+
+
+            if (Name.Contains("ENEMY"))
+                type = EntityType.Enemy;
+
+
+            return type;
+
+
+        }
+
 
 
         public void Serialize(String path, Map map)

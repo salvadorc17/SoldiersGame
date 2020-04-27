@@ -60,6 +60,7 @@
     <Compile Include="GameFormats\WADImagePixel.cs" />
     <Compile Include="GameManager\ImageManager.cs" />
     <Compile Include="GameManager\SoundManager.cs" />
+    <Compile Include="Game\Camera.cs" />
     <Compile Include="Game\Enemy.cs" />
     <Compile Include="Game\Entity.cs" />
     <Compile Include="Game\FieldView.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Game\Map.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Route.cs" />
+    <Compile Include="Game\Terrain.cs" />
     <Compile Include="Game\Vehicle.cs" />
     <Compile Include="GameManager\GameScreen.cs" />
     <Compile Include="GameManager\InputState.cs" />

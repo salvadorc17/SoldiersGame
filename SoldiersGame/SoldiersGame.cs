@@ -38,7 +38,7 @@ namespace SoldiersGame
         /// </summary>
         protected override void Initialize()
         {
-
+            ImageManager.InitWADs(GraphicsDevice);
 
             base.Initialize();
         }

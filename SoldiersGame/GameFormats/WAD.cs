@@ -7,9 +7,32 @@ using System.Text;
 
 namespace SoldierTactics.GameFormats
 {
-    public static class WAD
+    public class WAD
     {
-        const int PaletteSize = 512 + 13;
+
+        private List<WADImage> images;
+
+        public List<WADImage> Images
+        {
+            get
+            {
+                if (images == null) return null;
+                return images;
+            }
+        }
+
+        public int Files
+        {
+            get
+            {
+                if (images == null) return 0;
+                return images.Count;
+            }
+        }
+
+        public string Path;
+
+        public int PaletteSize = 512 + 13;
         /* WAD File format:
          *   Name          Bytes  Index
          * +--------------+-----+
@@ -22,25 +45,38 @@ namespace SoldierTactics.GameFormats
          * +--------------+-----+
          */
 
-        public static List<WADImage> Extract(string wadFile)
+
+        public WAD(string path)
         {
-            var images = new List<WADImage>();
-            if (!File.Exists(wadFile))
+            Path = path;
+
+
+            if (Path != null)
+                Extract();
+
+
+        }
+
+
+        public void Extract()
+        {
+            images = new List<WADImage>();
+            if (!File.Exists(Path))
             {
-                Trace.WriteLine("WAD: The file " + wadFile + " does not exist!");
-                return images;
+                Trace.WriteLine("WAD: The file " + Path + " does not exist!");
+                
             }
-            var fs = new FileStream(wadFile, FileMode.Open, FileAccess.Read);
+            var fs = new FileStream(Path, FileMode.Open, FileAccess.Read);
             var br = new BinaryReader(fs);
-            var bytes = br.ReadBytes((int)(new FileInfo(wadFile).Length));
+            var bytes = br.ReadBytes((int)(new FileInfo(Path).Length));
             br.Close();
             fs.Close();
             if (bytes.Length < 400 + 4 + 512 + 13 + 4)
             {
                 Trace.WriteLine("WAD: File too small!");
-                return images;
+                
             }
-            Trace.WriteLine("WAD: Reading file '" + wadFile + "'");
+            Trace.WriteLine("WAD: Reading file '" + Path + "'");
             // Read color palette count:
             int paletteCnt = (bytes[400] | bytes[401] << 8 | bytes[402] << 16 | bytes[403] << 24);
             Trace.WriteLine("WAD: Palette count: " + paletteCnt);
@@ -73,6 +109,7 @@ namespace SoldierTactics.GameFormats
                     try
                     {
                         bmp = new BMP(bytes, index);
+                        bmp.Name = name;
                         if (bmp.ColorPaletteIndex < palettes.Length)
                         {
                             bmp.Palette = palettes[bmp.ColorPaletteIndex];
@@ -87,7 +124,7 @@ namespace SoldierTactics.GameFormats
                     catch (Exception e)
                     {
                         Trace.WriteLine("WAD: Error reading BMP: " + name + ", " + e);
-                        return images;
+                        
                     }
                 }
                 else if (name.EndsWith("RLE"))
@@ -96,6 +133,7 @@ namespace SoldierTactics.GameFormats
                     try
                     {
                         rle = new RLE(bytes, index);
+                        rle.Name = name;
                         if (rle.ColorPaletteIndex < palettes.Length)
                         {
                             rle.Palette = palettes[rle.ColorPaletteIndex];
@@ -109,17 +147,17 @@ namespace SoldierTactics.GameFormats
                     catch (Exception e)
                     {
                         Trace.WriteLine("WAD: Error while reading RLE: " + name + ", " + e);
-                        return images;
+                        
                     }
                 }
                 else
                 {
                     Trace.WriteLine("WAD: Error filename does not end with BMP or RLE: " + name);
-                    return images;
+                    
                 }
             }
             Trace.WriteLine("WAD Extract() success!");
-            return images;
+            
         }
     }
 }

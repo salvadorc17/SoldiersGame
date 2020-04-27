@@ -7,35 +7,24 @@ namespace SoldierTactics.GameFormats
 {
     public abstract class WADImage
     {
-        //string _parent;
-        //public string Parent
-        //{
-        //    get => _parent;
-        //    set
-        //    {
-        //        if (_parent == value) return;
-        //        _parent = value;
-        //        _parentIndex = -1;
-        //        if (_parent?.EndsWith(".wad", StringComparison.InvariantCultureIgnoreCase) == true)
-        //        {
-        //            var sub = _parent.Substring(0, _parent.Length - 4);
-        //            int firstNumIndex = -1;
-        //            for (int i = _parent.Length - 1; i >= 0; --i)
-        //            {
-
-        //            }
-        //        }
-        //    }
-        //}
-        //int _parentIndex;
-        //public int ParentIndex
-        //{ get; }
 
         public string Name { get; set; }
         public UInt32 Width { get; protected set; }
         public UInt32 Height { get; protected set; }
         public WADImagePixel[,] Pixels { get; protected set; }
         protected byte[] _rawData;
+
+
+        public byte[] RawData
+        {
+            get
+            {
+                if (_rawData == null) return new byte[10];
+                return _rawData;
+            }
+        }
+
+
         public int RawDataSize
         {
             get

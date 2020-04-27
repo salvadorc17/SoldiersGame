@@ -34,8 +34,7 @@ namespace SoldierTactics
             backgroundTexture = ImageManager.LoadTexture(ScreenManager.GraphicsDevice, Config.SYSDIR + Path.DirectorySeparatorChar + "MISC" +
                 Path.DirectorySeparatorChar + "MENU800.BMP");
 
-            Texture2D text = ImageManager.ImageFromWADArchive(ScreenManager.GraphicsDevice, Config.SYSDIR + Path.DirectorySeparatorChar + "CARAS" +
-                Path.DirectorySeparatorChar + "COMANDOS.WAD");
+            Texture2D text = ImageManager.ImageFromWADArchive( 0, "COM0001.BMP");
 
         }
 

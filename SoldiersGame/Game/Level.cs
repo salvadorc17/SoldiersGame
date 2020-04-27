@@ -16,13 +16,17 @@ namespace SoldierTactics.Game
         public int ID;
         public string Name;
         public bool Debug;
-        public Sprite Background;
+        public List<Sprite> Floors, Walls, Water;
         public Map Map;
         public GameObject Dummy;
         public List<GameObject> Objects;
         public List<Enemy> Enemies;
         public List<Vehicle> Vehicles;
         public Player Player;
+
+
+        public Vector2 CameraPos;
+
         private Single Gametime;
 
         public Level(int id, string name, ContentManager content)
@@ -33,19 +37,36 @@ namespace SoldierTactics.Game
                  XmlSerializer ax = new XmlSerializer(typeof(Map));
 
 
-                Stream file = TitleContainer.OpenStream("Content/Levels/" + id + ".xml");
 
-                 Map = (Map)ax.Deserialize(file);
+            using (Stream file = TitleContainer.OpenStream("Content/Levels/" + name + ".xml"))
+            {
+                Map = (Map)ax.Deserialize(file);
 
-                 Background = new Sprite(Config.BGDIR + Map.Background, content);
-                 Enemies = new List<Enemy>();
+                if (Map.WadMap != "")
+                {
+
+                    ImageManager.LoadWad(1, Map.WadMap);
+
+
+                    Floors = Map.GenerateFloors();
+
+                    Walls = Map.GenerateWalls();
+
+
+
+                }
+
+                Enemies = new List<Enemy>();
                  Objects = new List<GameObject>();
                  Vehicles = new List<Vehicle>();
 
-                foreach (Entity entity in Map.entities)
+                foreach (Entity entity in Map.Entities)
                     if (entity != null)
                     {
-                        switch (entity.Type)
+
+                        EntityType type = entity.GetEntityType(); 
+
+                        switch (type)
                         {
 
                         case EntityType.None:
@@ -78,13 +99,15 @@ namespace SoldierTactics.Game
                         case EntityType.Enemy:
 
 
-                            Enemies.Add(new Enemy(entity.ID, entity.Name, entity.X, entity.Y, entity.Route, entity.RType, content));
+                            //Enemies.Add(new Enemy(entity.ID, entity.Name, entity.X, entity.Y, entity.Route, entity.RType, content));
 
                             break;
 
                     }
+                 }
 
-                }
+
+            }
 
         }
 
@@ -166,9 +189,20 @@ namespace SoldierTactics.Game
 
             Global.SpriteBatch = SpriteBatch;
 
-            if (Background.Image != null)
+            
 
-                SpriteBatch.Draw(Background.Image, new Rectangle(0, 0, (int)Global.ScreenWidth, (int)Global.ScreenHeight), Color.White);
+            if (Map != null && Map.Terrain.Floors.Count > 0)
+                for (int i = 0; i <= Map.Terrain.Floors.Count; i++)
+                {
+
+                    int value = ImageManager.WADImages[0].Files;
+
+                    if (Floors[i].Image != null)
+                    SpriteBatch.Draw(Floors[i].Image, new Rectangle(Map.Terrain.Floors[i].X, Map.Terrain.Floors[i].Y, 
+                        Floors[i].Width, Floors[i].Height), Color.White);
+
+
+                }
 
             if (Objects != null)
                 for (int i = 0; i <= Objects.Count - 1; i++)

@@ -9,6 +9,11 @@ namespace SoldierTactics
     {
         public static string GAMEDIR = "Content";
         public static string DATOSDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS";
+        public static string SYSDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS" + Path.DirectorySeparatorChar +
+            "BMPS" + Path.DirectorySeparatorChar + "SYSTEM";
+        public static string MAPDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS" + Path.DirectorySeparatorChar +
+            "BMPS" + Path.DirectorySeparatorChar + "MAP";
+
         public static string MUSICDIR = "DATOS" + Path.DirectorySeparatorChar + "MUSICA";
         public static string SOUNDDIR = DATOSDIR + Path.DirectorySeparatorChar + "SONIDO" + Path.DirectorySeparatorChar + "WAVE";
         public static string BGDIR = GAMEDIR + Path.DirectorySeparatorChar + "Textures";

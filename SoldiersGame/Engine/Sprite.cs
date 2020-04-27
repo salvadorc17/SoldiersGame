@@ -20,6 +20,10 @@ namespace SoldierTactics.Engine
         public int xOrigin { get; set; }
         public int yOrigin { get; set; }
 
+        public Sprite()
+        {
+        }
+
         public Sprite(string path) 
         {
             Name = path;
@@ -50,6 +54,15 @@ namespace SoldierTactics.Engine
             yOrigin = 0;
 
 
+
+        }
+
+        public Sprite(Texture2D texture)
+        {
+
+            Image = texture;
+            Width = texture.Width;
+            Height = texture.Height;
 
         }
 

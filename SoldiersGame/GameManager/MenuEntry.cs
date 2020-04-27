@@ -131,7 +131,7 @@ namespace SoldierTactics
 #endif
 
             // Draw the selected entry in yellow, otherwise white.
-            Color color = isSelected ? Color.DarkRed : Color.Black;
+            Color color = isSelected ? Color.White : Color.Black;
 
             // Pulsate the size of the selected menu entry.
             double time = gameTime.TotalGameTime.TotalSeconds;
