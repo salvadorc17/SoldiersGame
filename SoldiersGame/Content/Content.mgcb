@@ -63,3 +63,6 @@
 /processorParam:TextureFormat=Color
 /build:Textures/gradient.png
 
+#begin Levels/Test.xml
+/copy:Levels/Test.xml
+
