@@ -26,8 +26,8 @@ namespace SoldierTactics
         public const short COLOR_FORMAT = 24;
         public const bool FULL_SCREEN = false;
 
-       
 
+        public static SoldiersGame.SoldiersGame Game;
 
     }
 }

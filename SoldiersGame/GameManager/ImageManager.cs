@@ -45,7 +45,7 @@ namespace SoldiersGame
             else if (id == 1)
             {
 
-                WADImages.Add(new WAD(Config.MAPDIR + Path.DirectorySeparatorChar + name + ".wad"));
+                WADImages.Add(new WAD(Config.MAPDIR + Path.DirectorySeparatorChar + name));
 
 
             }

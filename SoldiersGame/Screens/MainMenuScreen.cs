@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+
+
 namespace SoldierTactics
 {
 
@@ -27,7 +31,13 @@ namespace SoldierTactics
             MenuEntries.Add(exitMenuEntry);
         }
 
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Config.Game.Exit();
 
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
         /// <summary>
         /// Event handler for when the Play Game menu entry is selected.
         /// </summary>
