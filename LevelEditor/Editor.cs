@@ -88,21 +88,21 @@ namespace LevelEditor
 
             Rectangle drect;
 
-            if (Map.Terrain.Floors.Count > 0 && MapImages.Count > 0)
-                for (int i = 0; i < Map.Terrain.Floors.Count; i++)
+            if (Map.Terrain.Tiles.Count > 0 && MapImages.Count > 0)
+                for (int i = 0; i < Map.Terrain.Tiles.Count; i++)
                 {
                     for (int z = 0; z < 10; z++)
-                        if (Map.Terrain.Floors[i].Z == z)
+                        if (Map.Terrain.Tiles[i].Z == z)
                         {
-                            drect = new Rectangle(Map.Terrain.Floors[i].X, Map.Terrain.Floors[i].Y,
+                            drect = new Rectangle(Map.Terrain.Tiles[i].X, Map.Terrain.Tiles[i].Y,
                                 MapImages[i].Width, MapImages[i].Height);
                             graphics.DrawImage(MapImages[i], drect);
                         }
                 }
 
-           if ( Map.Terrain.Floors.Count > 0)
-            graphics.DrawRectangle(Pens.Red, new Rectangle(Map.Terrain.Floors[TerrainId].X,
-                Map.Terrain.Floors[TerrainId].Y, MapImages[TerrainId].Width, MapImages[TerrainId].Height));
+           if ( Map.Terrain.Tiles.Count > 0)
+            graphics.DrawRectangle(Pens.Red, new Rectangle(Map.Terrain.Tiles[TerrainId].X,
+                Map.Terrain.Tiles[TerrainId].Y, MapImages[TerrainId].Width, MapImages[TerrainId].Height));
 
             // COPY BACKBUFFER TO GRAPHICS OBJECT
             graphics = Graphics.FromImage(bb);
@@ -213,12 +213,13 @@ namespace LevelEditor
 
                     label12.Text = label7.Text;
 
-                    Map.Terrain.Floors.Add(new Floor {
+                    Map.Terrain.Tiles.Add(new Tile {
 
                         X = (short)numericUpDown1.Value,
                         Y = (short)numericUpDown2.Value,
                         Z = (short)numericUpDown3.Value,
-                        Value = img
+                        Value = img,
+                        Type = comboBox1.SelectedIndex + 1
 
                     });
 
@@ -243,7 +244,25 @@ namespace LevelEditor
             int id = listBox3.SelectedIndex;
 
             if (id >= 0)
+            {
                 TerrainId = id;
+
+                if (Map.Terrain.Tiles.Count > 0 && id >= 0)
+                {
+
+                    numericUpDown1.Value = Map.Terrain.Tiles[id].X;
+
+                    numericUpDown2.Value = Map.Terrain.Tiles[id].Y;
+
+                    numericUpDown3.Value = Map.Terrain.Tiles[id].Z;
+
+                    comboBox1.SelectedIndex = Map.Terrain.Tiles[id].Type - 1;
+
+                }
+
+
+            }
+
 
         }
 
@@ -255,10 +274,10 @@ namespace LevelEditor
             if (WADFile != null && Map != null)
             {
 
-                if (Map.Terrain.Floors.Count > 0 && id >= 0)
+                if (Map.Terrain.Tiles.Count > 0 && id >= 0)
                 {
 
-                    Map.Terrain.Floors[id].X = (short)numericUpDown1.Value;
+                    Map.Terrain.Tiles[id].X = (short)numericUpDown1.Value;
 
                 }
 
@@ -273,14 +292,33 @@ namespace LevelEditor
             if (WADFile != null && Map != null)
             {
 
-                if (Map.Terrain.Floors.Count > 0 && id >= 0)
+                if (Map.Terrain.Tiles.Count > 0 && id >= 0)
                 {
 
-                    Map.Terrain.Floors[id].Z = (short)numericUpDown3.Value;
+                    Map.Terrain.Tiles[id].Z = (short)numericUpDown3.Value;
 
                 }
 
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int id = comboBox1.SelectedIndex;
+
+            if (WADFile != null && Map != null)
+            {
+
+                if (Map.Terrain.Tiles.Count > 0 && id >= 0)
+                {
+
+                    Map.Terrain.Tiles[id].Value = id + 1;
+
+                }
+
+            }
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -300,10 +338,10 @@ namespace LevelEditor
             if (WADFile != null && Map != null)
             {
 
-                if (Map.Terrain.Floors.Count > 0 && id >= 0)
+                if (Map.Terrain.Tiles.Count > 0 && id >= 0)
                 {
 
-                    Map.Terrain.Floors[id].Y = (short)numericUpDown2.Value;
+                    Map.Terrain.Tiles[id].Y = (short)numericUpDown2.Value;
 
                 }
 
@@ -319,10 +357,10 @@ namespace LevelEditor
             if (WADFile != null && Map != null)
             {
 
-                if (Map.Terrain.Floors.Count > 0 && listBox3.Items.Count > 0)
+                if (Map.Terrain.Tiles.Count > 0 && listBox3.Items.Count > 0)
                 {
 
-                    Map.Terrain.Floors.RemoveAt(id);
+                    Map.Terrain.Tiles.RemoveAt(id);
 
                     MapImages.RemoveAt(id);
 
