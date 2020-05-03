@@ -9,25 +9,15 @@ namespace SoldiersGame
 {
     public class Terrain
     {
-        [XmlArray("floors")]
-        [XmlArrayItem("floor")]
-        public List<Floor> Floors;
+        [XmlArray("tiles")]
+        [XmlArrayItem("tile")]
+        public List<Tile> Tiles;
 
-        [XmlArray("walls")]
-        [XmlArrayItem("wall")]
-        public List<Wall> Walls;
-
-        [XmlArray("waters")]
-        [XmlArrayItem("water")]
-        public List<Water> Water;
 
 
         public Terrain()
         {
-
-            Floors = new List<Floor>();
-            Walls = new List<Wall>();
-            Water = new List<Water>();
+            Tiles = new List<Tile>();
 
         }
 
@@ -35,7 +25,7 @@ namespace SoldiersGame
     }
 
 
-    public class Floor
+    public class Tile
     {
 
         [XmlAttribute("x")]
@@ -45,43 +35,25 @@ namespace SoldiersGame
         public short Y { get; set; }
 
         [XmlAttribute("z")]
-        public int Z { get; set; }
+        public short Z { get; set; }
 
         [XmlAttribute("value")]
         public int Value { get; set; }
 
+        [XmlAttribute("type")]
+        public int Type { get; set; }
+
     }
 
-    public class Wall
+    public enum TileType
     {
+        None = 0,
+        Floor = 1,
+        Wall = 2,
+        Water = 3
 
-        [XmlAttribute("x")]
-        public short X { get; set; }
 
-        [XmlAttribute("y")]
-        public short Y { get; set; }
 
-        [XmlAttribute("z")]
-        public int Z { get; set; }
-
-        [XmlAttribute("value")]
-        public int Value { get; set; }
     }
 
-    public class Water
-    {
-
-
-        [XmlAttribute("x")]
-        public short X { get; set; }
-
-        [XmlAttribute("y")]
-        public short Y { get; set; }
-
-        [XmlAttribute("z")]
-        public int Z { get; set; }
-
-        [XmlAttribute("value")]
-        public int Value { get; set; }
-    }
 }

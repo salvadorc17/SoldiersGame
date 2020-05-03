@@ -47,6 +47,7 @@
     <Compile Include="Engine\Input.cs" />
     <Compile Include="Engine\Sound.cs" />
     <Compile Include="Engine\Sprite.cs" />
+    <Compile Include="Engine\Triangle.cs" />
     <Compile Include="Engine\Vector.cs" />
     <Compile Include="GameManager\ImageManager.cs" />
     <Compile Include="GameManager\SoundManager.cs" />

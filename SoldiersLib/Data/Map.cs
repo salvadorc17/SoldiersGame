@@ -40,16 +40,15 @@ namespace SoldierTactics
 
 
 
-        public void Serialize(String path, Map map)
+        public static void Serialize(String path, Map map)
         {
 
-            System.Xml.Serialization.XmlSerializer ax = new System.Xml.Serialization.XmlSerializer(typeof(Map));
+            XmlSerializer serialize = new XmlSerializer(typeof(Map));
 
-            Stream file = File.Open(path, FileMode.Open);
-
-            StreamWriter writer = new StreamWriter(file);
-            ax.Serialize(writer, map);
-            writer.Dispose();
+            using (var writer = new StreamWriter(path))
+            {
+                serialize.Serialize(writer, map);
+            }
 
         }
 

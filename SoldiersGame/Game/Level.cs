@@ -16,7 +16,7 @@ namespace SoldierTactics.Game
         public int ID;
         public string Name;
         public bool Debug;
-        public List<Sprite> Floors, Walls, Water;
+        public List<Sprite> Tiles;
         public Map Map;
         public GameObject Dummy;
         public List<GameObject> Objects;
@@ -48,10 +48,7 @@ namespace SoldierTactics.Game
                     ImageManager.LoadWad(1, Map.WadMap);
 
 
-                    Floors = GenerateFloors();
-
-                    Walls = GenerateWalls();
-
+                    Tiles = GenerateTiles();
 
 
                 }
@@ -183,13 +180,13 @@ namespace SoldierTactics.Game
 
         }
 
-        public List<Sprite> GenerateFloors()
+        public List<Sprite> GenerateTiles()
         {
             List<Sprite> TerrainSprites = new List<Sprite>();
 
 
-            if (Map.Terrain.Floors.Count > 0)
-                for (int i = 0; i < Map.Terrain.Floors.Count; i++)
+            if (Map.Terrain.Tiles.Count > 0)
+                for (int i = 0; i < Map.Terrain.Tiles.Count; i++)
                 {
 
                     Sprite spr = GetSprite(0, i);
@@ -205,50 +202,22 @@ namespace SoldierTactics.Game
 
         }
 
-        public List<Sprite> GenerateWalls()
-        {
-            List<Sprite> TerrainSprites = new List<Sprite>();
-
-
-            if (Map.Terrain.Walls.Count > 0)
-                for (int i = 0; i <  Map.Terrain.Walls.Count; i++)
-                {
-
-                    Sprite spr = GetSprite(0, i);
-
-
-                    TerrainSprites.Add(spr);
-
-
-                }
-
-            return TerrainSprites;
-
-
-        }
+        
 
         public Sprite GetSprite(int type, int id)
         {
             Sprite sprite = new Sprite();
 
-            //Floor sprite
+            //Tile sprite
             if (type == 0)
             {
 
                 sprite = new Sprite(
-                ImageManager.ImageFromWADArchive(0, Map.Terrain.Floors[id].Value));
+                ImageManager.ImageFromWADArchive(0, Map.Terrain.Tiles[id].Value));
 
 
             }
-            //Wall sprite
-            else if (type == 1)
-            {
-
-                sprite = new Sprite(
-                ImageManager.ImageFromWADArchive(0, Map.Terrain.Walls[id].Value));
-
-
-            }
+           
 
             return sprite;
 
@@ -262,15 +231,15 @@ namespace SoldierTactics.Game
 
             
 
-            if (Map != null && Map.Terrain.Floors.Count > 0)
-                for (int i = 0; i < Map.Terrain.Floors.Count; i++)
+            if (Map != null && Map.Terrain.Tiles.Count > 0)
+                for (int i = 0; i < Map.Terrain.Tiles.Count; i++)
                 {
 
                     int value = ImageManager.WADImages[0].Files;
 
-                    if (Floors[i].Image != null)
-                    SpriteBatch.Draw(Floors[i].Image, new Rectangle(Map.Terrain.Floors[i].X, Map.Terrain.Floors[i].Y, 
-                        Floors[i].Width, Floors[i].Height), Color.White);
+                    if (Tiles[i].Image != null)
+                    SpriteBatch.Draw(Tiles[i].Image, new Rectangle(Map.Terrain.Tiles[i].X, Map.Terrain.Tiles[i].Y, 
+                        Tiles[i].Width, Tiles[i].Height), Color.White);
 
 
                 }

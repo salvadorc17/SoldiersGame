@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using SoldiersGame.Engine;
 
 namespace SoldierTactics.Game
 {
@@ -8,13 +9,12 @@ namespace SoldierTactics.Game
     {
 
        public bool Enabled;
-       public int Angle;
-       public Point[] Points;
+       public Triangle Triangle;
 
-       public FieldView(int angle, bool enabled)
+       public FieldView(float angle, bool enabled)
        {
-           Points = new Point[3];
-           Angle = angle;
+            Triangle = new Triangle(angle);
+           
            Enabled = enabled;
 
 
@@ -28,18 +28,18 @@ namespace SoldierTactics.Game
 
            int valy = 0;
 
-           Points[0] = new Point(x, y);
+           Triangle.Points[0] = new Point(x, y);
 
            if (x > 0)
-               valx = x * (int)Math.Sin(Angle);
+               valx = x * (int)Math.Cos(Triangle.Angle);
 
            if (y > 0)
-               valy = y * (int)Math.Sin(Angle);
+               valy = y * (int)Math.Sin(Triangle.Angle);
 
 
-           Points[1] = new Point(x + valx, y - valy);
+            Triangle.Points[1] = new Point(x + valx, y - valy);
 
-           Points[2] = new Point(x + valx, y + valy);
+            Triangle.Points[2] = new Point(x + valx, y + valy);
        
        
        }
