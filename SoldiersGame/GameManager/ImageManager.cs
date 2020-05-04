@@ -34,11 +34,17 @@ namespace SoldiersGame
         {
         
             //System wad
-            if (id == 0)
+            if (id == 0 && name == "")
             {
 
-                WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "CARAS" +
-                Path.DirectorySeparatorChar + name));
+                WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "GLOBAL" +
+                Path.DirectorySeparatorChar + "GLOBAL.WAD"));
+
+                WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "GLOBAL" +
+                Path.DirectorySeparatorChar + "CURSORES.WAD"));
+
+                WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "GLOBAL" +
+                Path.DirectorySeparatorChar + "800X600.WAD"));
 
             }
             //Map wad
@@ -112,8 +118,9 @@ namespace SoldiersGame
 
                 WAD wad = WADImages[id];
                 foreach (WADImage img in wad.Images)
-                    if (img.Name == name && img.RawDataSize > 0)
-                        texture.SetData<byte>(img.RawData);
+                    if (img.Name.Contains(name) && img.RawDataSize > 0)
+                        texture = ImageFromStream(img);
+                        //texture.SetData<byte>(img.RawData);
 
             }
 

@@ -58,6 +58,7 @@
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\Route.cs" />
+    <Compile Include="Game\UI.cs" />
     <Compile Include="Game\Vehicle.cs" />
     <Compile Include="GameManager\GameScreen.cs" />
     <Compile Include="GameManager\InputState.cs" />

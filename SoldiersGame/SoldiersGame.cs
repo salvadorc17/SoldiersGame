@@ -25,9 +25,6 @@ namespace SoldiersGame
             screenManager = new ScreenManager(this, graphics, Services, Content);
             Components.Add(screenManager);
 
-            screenManager.AddScreen(new BackgroundScreen(), PlayerIndex.One);
-            screenManager.AddScreen(new MainMenuScreen(), PlayerIndex.One);
-
         }
 
         /// <summary>
@@ -39,8 +36,14 @@ namespace SoldiersGame
         protected override void Initialize()
         {
             ImageManager.InitWADs(GraphicsDevice);
+            ImageManager.LoadWad(0, "");
 
             Config.Game = this;
+
+            
+            screenManager.AddScreen(new BackgroundScreen(), PlayerIndex.One);
+            screenManager.AddScreen(new MainMenuScreen(), PlayerIndex.One);
+
 
             base.Initialize();
         }

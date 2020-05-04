@@ -23,12 +23,15 @@ namespace SoldierTactics
         private int LevelIndex;
 
         private Camera Camera;
+        private VertexBuffer VBuffer;
+        private UI UI;
        
         private float pauseAlpha;
         // Meta-Maze game state.
 
         private bool wasContinuePressed;
 
+        private MouseState MouseState;
         private GamePadState gamePadState;
         private KeyboardState keyboardState;
         private TouchCollection touchState;
@@ -40,14 +43,14 @@ namespace SoldierTactics
 
 
 
-		public GameplayScreen(ScreenManager screenManager)
+		public GameplayScreen(ScreenManager screenManager, UI ui)
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
             screenManager.Game.ResetElapsedTime();
-
-
+            UI = ui;
+            UI.Load();
         }
 
 
@@ -67,7 +70,7 @@ namespace SoldierTactics
 
             Level.CameraPos = new Vector2(0, 0);
 
-
+           
 
             Camera.setX((int)Level.CameraPos.X);
             Camera.setY((int)Level.CameraPos.Y);
@@ -82,9 +85,10 @@ namespace SoldierTactics
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-
-
             base.Update(gameTime, otherScreenHasFocus, false);
+
+            MouseState = Mouse.GetState();
+
 
             Viewport viewport = ScreenManager.GraphicsDevice.Viewport;
 
@@ -126,7 +130,7 @@ namespace SoldierTactics
                 Level.Update(gameTime);
 
 
-           
+
 
         }
 
@@ -163,17 +167,20 @@ namespace SoldierTactics
 
         public override void Draw(GameTime gameTime)
         {
-
+            
             //Matrix cameraTransform = Matrix.CreateTranslation(-Maze.cameraPosition, 0.0f, 0.0f);
 
             ScreenManager.SpriteBatch.Begin();
 
             base.Draw(gameTime);
 
-            DrawHud(ScreenManager.SpriteBatch);
 
             if (Level != null)
                 Level.Draw(ScreenManager.SpriteBatch);
+
+            DrawHud(ScreenManager.SpriteBatch);
+
+
 
             ScreenManager.SpriteBatch.End();
 
@@ -182,7 +189,7 @@ namespace SoldierTactics
         private void DrawHud(SpriteBatch spriteb)
         {
             
-            Rectangle titleSafeArea = new Rectangle(10,10, 640, 200);
+            Rectangle titleSafeArea = new Rectangle(10,60, 640, 200);
             Vector2 hudLocation = new Vector2(titleSafeArea.X, titleSafeArea.Y);
             Vector2 center = new Vector2(titleSafeArea.X + titleSafeArea.Width / 2f, titleSafeArea.Y + titleSafeArea.Height / 2f);
 
@@ -190,22 +197,44 @@ namespace SoldierTactics
             // er is running out of time.
             string timeString = "TIME: "; //+ Maze.TimeRemaining.Minutes.ToString("00") + ":" + Maze.TimeRemaining.Seconds.ToString("00");
             Color timeColor = Color.DarkRed;
-            //if (Maze.TimeRemaining > WarningTime || Maze.CurrentRoom.ReachedExit || Convert.ToInt32(Maze.TimeRemaining.TotalSeconds) % 2 == 0)
-           // {
-               // timeColor = Color.White;
-            //}
-           // else
-            //{
-               // timeColor = Color.Red;
-            //}
+           
             DrawShadowedString(hudFont, timeString, hudLocation, timeColor);
 
-            // Draw score
-           // float timeHeight = hudFont.MeasureString(timeString).Y;
-           // DrawShadowedString(hudFont, "SCORE: " + Maze.Score.ToString(), hudLocation + new Vector2(0f, timeHeight * 1.2f), Color.White);
+            if (UI.Hud != null)
+                ScreenManager.SpriteBatch.Draw(UI.Hud, new Rectangle(0, 0,
+                    UI.Hud.Width, UI.Hud.Height), Color.White);
+
+
+            if (UI.Hud2 != null)
+                ScreenManager.SpriteBatch.Draw(UI.Hud2, new Rectangle(UI.Hud.Width, 0,
+                    UI.Hud2.Width, UI.Hud2.Height), Color.White);
+
+            if (UI.Bar != null)
+                ScreenManager.SpriteBatch.Draw(UI.Bar, new Rectangle(800 - UI.Bar.Width, UI.Hud.Height,
+                    UI.Bar.Width, UI.Bar.Height), Color.White);
+
+            if (UI.Bar2 != null)
+                ScreenManager.SpriteBatch.Draw(UI.Bar2, new Rectangle(800 - UI.Bar2.Width, 600 - UI.Bar2.Height,
+                    UI.Bar2.Width, UI.Bar2.Height), Color.White);
+
+            if (UI.Eye != null)
+                ScreenManager.SpriteBatch.Draw(UI.Eye, new Rectangle(800 - UI.Eye.Width, 0,
+                    UI.Eye.Width, UI.Eye.Height), Color.White);
+
+            if (UI.Camera != null)
+                ScreenManager.SpriteBatch.Draw(UI.Camera, new Rectangle(800 - 60 - UI.Camera.Width, 0,
+                    UI.Camera.Width, UI.Camera.Height), Color.White);
+
+            if (UI.Backpack != null)
+                ScreenManager.SpriteBatch.Draw(UI.Backpack, new Rectangle(800 - UI.Backpack.Width, 600 - UI.Backpack.Height,
+                    UI.Backpack.Width, UI.Backpack.Height), Color.White);
 
             // Determine the status overlay message to show.
             Texture2D status = null;
+
+            if (UI.Cursor != null)
+                ScreenManager.SpriteBatch.Draw(UI.Cursor, new Rectangle(MouseState.X, MouseState.Y,
+                    UI.Cursor.Width, UI.Cursor.Height), Color.White);
 
 
             if (status != null)

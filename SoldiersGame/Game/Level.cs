@@ -13,7 +13,7 @@ namespace SoldierTactics.Game
 {
     public class Level
     {
-        public int ID;
+        public int ID, WadNumber;
         public string Name;
         public bool Debug;
         public List<Sprite> Tiles;
@@ -44,6 +44,8 @@ namespace SoldierTactics.Game
 
                 if (Map.WadMap != "")
                 {
+
+                    WadNumber = ImageManager.WADImages.Count;
 
                     ImageManager.LoadWad(1, Map.WadMap);
 
@@ -213,7 +215,7 @@ namespace SoldierTactics.Game
             {
 
                 sprite = new Sprite(
-                ImageManager.ImageFromWADArchive(0, Map.Terrain.Tiles[id].Value));
+                ImageManager.ImageFromWADArchive(WadNumber, Map.Terrain.Tiles[id].Value));
 
 
             }
