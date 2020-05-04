@@ -33,7 +33,7 @@ namespace SoldiersGame
                    -(int)Position.Y, 0) *
                    Matrix.CreateRotationZ(0) *
                    Matrix.CreateScale(new Vector3(1, 1, 1)) *
-                   Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
+                   Matrix.CreateTranslation(new Vector3(0, 0, 0));
             }
         }
 

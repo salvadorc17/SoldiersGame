@@ -130,7 +130,7 @@ namespace SoldierTactics
                 Level.Update(gameTime);
 
 
-
+            Camera.Update();
 
         }
 
@@ -158,7 +158,37 @@ namespace SoldierTactics
                 keyboardState.IsKeyDown(Keys.Space) ||
                 gamePadState.IsButtonDown(Buttons.A);
                  
-                
+            if (keyboardState.IsKeyDown(Keys.F1))
+            {
+
+                Global.DebugMode = !Global.DebugMode;
+
+            }
+            else if (keyboardState.IsKeyDown(Keys.J))
+            {
+
+                Camera.ToPan = false;
+                Camera.IncrementX(-15);
+
+            }
+            else if (keyboardState.IsKeyDown(Keys.I))
+            {
+                Camera.ToPan = false;
+                Camera.IncrementY(-15);
+
+            }
+            else if (keyboardState.IsKeyDown(Keys.K))
+            {
+                Camera.ToPan = false;
+                Camera.IncrementY(15);
+
+            }
+            else if (keyboardState.IsKeyDown(Keys.L))
+            {
+                Camera.ToPan = false;
+                Camera.IncrementX(15);
+
+            }
 
 
             wasContinuePressed = continuePressed;
@@ -167,10 +197,11 @@ namespace SoldierTactics
 
         public override void Draw(GameTime gameTime)
         {
-            
+
             //Matrix cameraTransform = Matrix.CreateTranslation(-Maze.cameraPosition, 0.0f, 0.0f);
 
-            ScreenManager.SpriteBatch.Begin();
+            ScreenManager.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                null, null, null, null, Camera.TranslationMatrix);
 
             base.Draw(gameTime);
 
@@ -201,32 +232,32 @@ namespace SoldierTactics
             DrawShadowedString(hudFont, timeString, hudLocation, timeColor);
 
             if (UI.Hud != null)
-                ScreenManager.SpriteBatch.Draw(UI.Hud, new Rectangle(0, 0,
+                ScreenManager.SpriteBatch.Draw(UI.Hud, new Rectangle((int)Camera.Position.X, (int)Camera.Position.Y,
                     UI.Hud.Width, UI.Hud.Height), Color.White);
 
 
             if (UI.Hud2 != null)
-                ScreenManager.SpriteBatch.Draw(UI.Hud2, new Rectangle(UI.Hud.Width, 0,
+                ScreenManager.SpriteBatch.Draw(UI.Hud2, new Rectangle((int)Camera.Position.X + UI.Hud.Width, (int)Camera.Position.Y,
                     UI.Hud2.Width, UI.Hud2.Height), Color.White);
 
             if (UI.Bar != null)
-                ScreenManager.SpriteBatch.Draw(UI.Bar, new Rectangle(800 - UI.Bar.Width, UI.Hud.Height,
+                ScreenManager.SpriteBatch.Draw(UI.Bar, new Rectangle((int)Camera.Position.X + 800 - UI.Bar.Width, (int)Camera.Position.Y + UI.Hud.Height,
                     UI.Bar.Width, UI.Bar.Height), Color.White);
 
             if (UI.Bar2 != null)
-                ScreenManager.SpriteBatch.Draw(UI.Bar2, new Rectangle(800 - UI.Bar2.Width, 600 - UI.Bar2.Height,
+                ScreenManager.SpriteBatch.Draw(UI.Bar2, new Rectangle((int)Camera.Position.X + 800 - UI.Bar2.Width, (int)Camera.Position.Y + 600 - UI.Bar2.Height,
                     UI.Bar2.Width, UI.Bar2.Height), Color.White);
 
             if (UI.Eye != null)
-                ScreenManager.SpriteBatch.Draw(UI.Eye, new Rectangle(800 - UI.Eye.Width, 0,
+                ScreenManager.SpriteBatch.Draw(UI.Eye, new Rectangle((int)Camera.Position.X + 800 - UI.Eye.Width, (int)Camera.Position.Y,
                     UI.Eye.Width, UI.Eye.Height), Color.White);
 
             if (UI.Camera != null)
-                ScreenManager.SpriteBatch.Draw(UI.Camera, new Rectangle(800 - 60 - UI.Camera.Width, 0,
+                ScreenManager.SpriteBatch.Draw(UI.Camera, new Rectangle((int)Camera.Position.X + 800 - 60 - UI.Camera.Width, (int)Camera.Position.Y,
                     UI.Camera.Width, UI.Camera.Height), Color.White);
 
             if (UI.Backpack != null)
-                ScreenManager.SpriteBatch.Draw(UI.Backpack, new Rectangle(800 - UI.Backpack.Width, 600 - UI.Backpack.Height,
+                ScreenManager.SpriteBatch.Draw(UI.Backpack, new Rectangle((int)Camera.Position.X + 800 - UI.Backpack.Width, (int)Camera.Position.Y + 600 - UI.Backpack.Height,
                     UI.Backpack.Width, UI.Backpack.Height), Color.White);
 
             // Determine the status overlay message to show.
