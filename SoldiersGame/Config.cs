@@ -11,6 +11,8 @@ namespace SoldierTactics
         public static string DATOSDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS";
         public static string SYSDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS" + Path.DirectorySeparatorChar +
             "BMPS" + Path.DirectorySeparatorChar + "SYSTEM";
+        public static string ELEMDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS" + Path.DirectorySeparatorChar +
+            "ELEM";
         public static string MAPDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS" + Path.DirectorySeparatorChar +
             "BMPS" + Path.DirectorySeparatorChar + "MAP";
 

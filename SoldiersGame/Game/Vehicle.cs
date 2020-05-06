@@ -42,11 +42,6 @@ namespace SoldierTactics.Game
                 if (Animations != null)
                      {
 
-                         Animations[0] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Dead", content), 1.0F, 1, true);
-                         Animations[1] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Right", content), 1.0F, 1, true);
-                         Animations[2] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Left", content), 1.0F, 1, true);
-                         Animations[3] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Down", content), 1.0F, 1, true);
-                         Animations[4] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Up", content), 1.0F, 1, true);
                          CurrentAnimation = Animations[1];
                          Direction = Direction.Right;
                          Position = new Vector(X, Y);

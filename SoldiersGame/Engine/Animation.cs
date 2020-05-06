@@ -4,17 +4,18 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using SoldiersGame;
 
+
 namespace SoldierTactics.Engine
 {
 
     public class Animation
     {
-        public Sprite Texture
+        public Sprite CurrentSprite
         {
-            get { return m_texture; }
+            get { return m_currentsprite; }
         }
 
-        private Sprite m_texture;
+        private Sprite m_currentsprite;
 
 
         public List<Sprite> Frames;
@@ -38,6 +39,9 @@ namespace SoldierTactics.Engine
 
         private bool m_isLooping;
 
+        public bool IsFliped;
+       
+
         public bool isEnabled;
         /// <summary>
         /// Gets the number of frames in the animation.
@@ -55,13 +59,13 @@ namespace SoldierTactics.Engine
         public int FrameWidth
         {
             // Assume square frames.
-            get { return Texture.Width / FrameCount; }
+            get { return CurrentSprite.Width / FrameCount; }
         }
 
         public int FrameWidthFixed
         {
             // Assume square frames.
-            get { return Texture.Width; }
+            get { return CurrentSprite.Width; }
         }
 
         /// <summary>
@@ -69,7 +73,7 @@ namespace SoldierTactics.Engine
         /// </summary>
         public int FrameHeight
         {
-            get { return Texture.Height; }
+            get { return CurrentSprite.Height; }
         }
 
         public Vector Origin
@@ -94,16 +98,17 @@ namespace SoldierTactics.Engine
         /// Constructors a new animation.
         /// </summary>        
 
-        public Animation(Sprite texture, float frameTime, int framecount, bool isLooping)
+
+        public Animation(List<Sprite> textures, float frameTime, int framecount, bool isLooping)
         {
 
-            this.m_texture = texture;
+            this.m_currentsprite = textures[0];
             this.m_frameTime = frameTime;
             this.m_framecount = framecount;
             this.m_isLooping = isLooping;
             isEnabled = true;
 
-            Frames = Texture.Split(Texture.Width, Texture.Height);
+            Frames = textures;
         }
 
         public void Update(GameTime gameTime)
@@ -145,8 +150,9 @@ namespace SoldierTactics.Engine
         public void Draw( int x, int y, int w, int h)
         {
 
-            if (m_texture != null)
-                Global.SpriteBatch.Draw(Texture.Image, new Rectangle(x, y, w * (int)Global.ScaleWidth, h * (int)Global.ScaleHeight), new Rectangle(m_frameIndex * w, 0, w, h), Color.White);
+            if (Frames[FrameIndex].Image != null)
+                Global.SpriteBatch.Draw(Frames[FrameIndex].Image, new Vector2(x,y), new Rectangle(0,0, w,h), Color.White, 
+                    0, Vector2.Zero, 1.0f, IsFliped == true ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 1.0f);
 
 
         }

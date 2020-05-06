@@ -70,15 +70,9 @@ namespace SoldierTactics.Game
 
                         case EntityType.None:
 
-                            //Do nothing
+                                //Do nothing
 
-                            break;
-
-                        case EntityType.Player:
-
-                            Player = new Game.Player(entity.ID, entity.Name, "Player1", entity.X, entity.Y, content);
-
-                            break;
+                                break;
 
                         case EntityType.Object:
 
@@ -105,7 +99,15 @@ namespace SoldierTactics.Game
                     }
                  }
 
+                foreach (Soldier soldier in Map.Soldiers)
+                {
 
+                    WadNumber = ImageManager.WADImages.Count;
+
+                    ImageManager.LoadWad(2, soldier.Name);
+                    Player = new Game.Player(WadNumber, soldier.Name, "Player" + WadNumber, soldier.X, soldier.Y, 45, content);
+
+                }
             }
 
         }

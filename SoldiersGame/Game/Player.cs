@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using System.Xml.Serialization;
+using System.IO;
+using SoldiersGame;
 
 namespace SoldierTactics.Game
 {
@@ -15,8 +18,9 @@ namespace SoldierTactics.Game
         public int State, Anim;
         public Direction Direction;
         public bool Action, LeftDown, RightDown;
+        public SpriteTable SpriteTable;
         public Sprite Face, Weapon, Cursor;
-        public Animation[] Animations;
+        public List<Animation> Animations;
         public Animation CurrentAnimation, Effect;
         public Rectangle Bounds;
         public Vector Position;
@@ -33,10 +37,22 @@ namespace SoldierTactics.Game
                 Class = clss;
                 X = x;
                 Y = y;
-                Animations = new Animation[10];
+
+                Animations = new List<Animation>();
+
+                XmlSerializer ax = new XmlSerializer(typeof(SpriteTable));
+
                 Anim = 0;
                 Action = false;
                 FieldView = new FieldView(fov, true);
+
+
+                using (Stream file = TitleContainer.OpenStream("Content/Sprites/" + name + ".xml"))
+                {
+                    SpriteTable = (SpriteTable)ax.Deserialize(file);
+
+                }
+
 
                 Load(content);
 
@@ -44,42 +60,33 @@ namespace SoldierTactics.Game
 
 
 
-        public Player(int id, string name, string clss, int x, int y, ContentManager content)
-             {
-                 ID = id;
-                 Name = name;
-                 Class = clss;
-                 X = x;
-                 Y = y;
-                 Anim = 0;
-                 Animations = new Animation[10];
-                 Action = false;
-                 //ActionSound = new Sound(1, SoundEngine.shootSound, false);
-                 FieldView = new FieldView(45, true);
-
-                 Load(content);
-
-             }
-
         public void Load(ContentManager content)
             {
 
-          
-
+                    List<Sprite> Sprites;
                     //Face = Image.FromFile(Config.SPRITEDIR + Class + "/face.png");
                     //Weapon = Image.FromFile(Config.SPRITEDIR + Class + "/rifle.png");
                     //Cursor = Image.FromFile(Config.SPRITEDIR + Class + "/aim.png");
-                    Animations[0] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Idle", content), 2.0F, 1, true);
-                    Animations[1] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Right", content), 1.0F, 8, true);
-                    Animations[2] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Left", content), 1.0F, 8, true);
-                    Animations[3] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Down", content), 1.0F, 8, true);
-                    Animations[4] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Up", content), 1.0F, 8, true);
-                    Animations[5] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Shoot", content), 1.0F, 1, true);
-                    Animations[6] = new Animation(new Sprite(Config.SPRITEDIR + Name + "/Snipe", content), 1.0F, 4, true);
-                    //Effect = new Animation(new Sprite(Config.SPRITEDIR + "/shooteff.png", 100, 17), 1.0F, 5, false);
-                  
 
-                    CurrentAnimation = Animations[0];
+
+                    for (int i = 0; i < SpriteTable.Sequences.Count; i++)
+                    {
+                        if (SpriteTable.Sequences[i].Frames.Count > 0)
+                        {
+                                Sprites = new List<Sprite>();
+
+                                foreach (Frame frame in SpriteTable.Sequences[i].Frames)
+                                    Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID, frame.Name)));
+
+                                Animations.Add(new Animation(Sprites, SpriteTable.Sequences[i].Speed,
+                                SpriteTable.Sequences[i].Frames.Count, SpriteTable.Sequences[i].Type == 1 ? true : false));
+                         }
+
+
+                       }
+
+
+            CurrentAnimation = Animations[0];
                     Direction = Direction.Right;
                     Position = new Vector(X, Y);
                     Bounds = new Rectangle(X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);
@@ -106,6 +113,7 @@ namespace SoldierTactics.Game
 
                             //P1 Move right
                             CurrentAnimation = Animations[1];
+                            CurrentAnimation.IsFliped = false;
                             X += 3;
 
                         }
@@ -114,8 +122,9 @@ namespace SoldierTactics.Game
                         {
 
                             //P1 Move left
-                            CurrentAnimation = Animations[2];
-                            X-= 3;
+                            CurrentAnimation = Animations[1];
+                            CurrentAnimation.IsFliped = true;
+                            X -= 3;
 
                         }
 
@@ -154,7 +163,7 @@ namespace SoldierTactics.Game
         public void Draw()
         {
             if (CurrentAnimation != null)
-                CurrentAnimation.Draw( X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);
+                CurrentAnimation.Draw( X, Y, CurrentAnimation.CurrentSprite.Width, CurrentAnimation.CurrentSprite.Height);
 
             if (Action == true && Effect.isEnabled)
                 Effect.Draw( X, Y, Effect.FrameWidth, Effect.FrameHeight);

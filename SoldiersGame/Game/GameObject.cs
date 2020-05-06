@@ -26,7 +26,7 @@ namespace SoldierTactics.Game
                Y = y;
                OType = type;
 
-               Sprite = new Animation(new Sprite(Config.SPRITEDIR + "Objects/" + Name, content ), 1.0F, frames, true);
+
 
                //Effect = new Animation(new Sprite(Config.SPRITEDIR + "explosion.png", 1540 , 90), 2.0F, 14, false);
                Bounds = new Rectangle(x, y, Sprite.FrameWidth, Sprite.FrameHeight);
