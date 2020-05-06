@@ -26,14 +26,19 @@ namespace SoldierTactics
         [XmlElement("terrain")]
         public Terrain Terrain { get; set; }
 
-        [XmlArray("objects")]
-        [XmlArrayItem("object")]
+        [XmlArray("entities")]
+        [XmlArrayItem("entity")]
         public List<Entity> Entities { get; set; }
+
+        [XmlArray("soldiers")]
+        [XmlArrayItem("soldier")]
+        public List<Soldier> Soldiers { get; set; }
 
         public Map()
         {
             Terrain = new Terrain();
             Entities = new List<Entity>();
+            Soldiers = new List<Soldier>();
 
         }
 

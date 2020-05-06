@@ -38,7 +38,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Entity.cs" />
+    <Compile Include="Data\Inventory.cs" />
     <Compile Include="Data\Map.cs" />
+    <Compile Include="Data\Soldier.cs" />
+    <Compile Include="Data\SpriteTable.cs" />
     <Compile Include="Data\Terrain.cs" />
     <Compile Include="GameFormats\BMP.cs" />
     <Compile Include="GameFormats\DIR.cs" />

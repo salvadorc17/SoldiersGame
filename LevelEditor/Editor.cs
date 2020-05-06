@@ -31,6 +31,8 @@ namespace LevelEditor
 
         private WAD WADFile;
 
+        private SpriteTable SpriteTable;
+
         private bool Loaded;
 
         public Editor()
@@ -319,6 +321,30 @@ namespace LevelEditor
 
             }
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SpriteTable = new SpriteTable();
+            SpriteTable.Name = textBox1.Text;
+            SpriteTable.Sequences = new List<Sequence>();
+            if (numericUpDown4.Value >= 1)
+            {
+                SpriteTable.Sequences.Add(new Sequence());
+                SpriteTable.Sequences[0].Name = "Idle";
+                SpriteTable.Sequences[0].Frames = new List<Frame>();
+                SpriteTable.Sequences[0].Frames.Add(new Frame());
+            }
+            if (numericUpDown4.Value >= 2)
+            {
+                SpriteTable.Sequences.Add(new Sequence());
+                SpriteTable.Sequences[1].Name = "Walk";
+                SpriteTable.Sequences[1].Frames = new List<Frame>();
+                SpriteTable.Sequences[1].Frames.Add(new Frame());
+            }
+
+            SoldierTactics.SpriteTable.Serialize(AppDomain.CurrentDomain.BaseDirectory + "/Content/Sprites/"
+               + textBox1.Text + ".xml", SpriteTable);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

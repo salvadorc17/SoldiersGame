@@ -40,6 +40,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -73,8 +75,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,6 +103,10 @@
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -204,6 +220,28 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Terrain";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 197);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(34, 13);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Type:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Floor",
+            "Wall",
+            "Water"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 216);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(53, 21);
+            this.comboBox1.TabIndex = 14;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // numericUpDown3
             // 
@@ -338,6 +376,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.label1);
@@ -515,7 +554,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(194, 57);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(574, 323);
+            this.panel2.Size = new System.Drawing.Size(331, 323);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -523,7 +562,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(566, 315);
+            this.pictureBox1.Size = new System.Drawing.Size(322, 315);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -532,27 +571,113 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // comboBox1
+            // groupBox6
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Floor",
-            "Wall",
-            "Water"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 216);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(53, 21);
-            this.comboBox1.TabIndex = 14;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.groupBox6.Controls.Add(this.numericUpDown6);
+            this.groupBox6.Controls.Add(this.numericUpDown5);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Controls.Add(this.textBox3);
+            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.Controls.Add(this.numericUpDown4);
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.label16);
+            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.button5);
+            this.groupBox6.Location = new System.Drawing.Point(531, 57);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(249, 323);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Animations";
             // 
-            // label15
+            // button5
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 197);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(34, 13);
-            this.label15.TabIndex = 15;
-            this.label15.Text = "Type:";
+            this.button5.Location = new System.Drawing.Point(148, 281);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "Generate";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(117, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(92, 20);
+            this.textBox1.TabIndex = 11;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(40, 45);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 13);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Name:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(31, 98);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(64, 13);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Sequences:";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Location = new System.Drawing.Point(162, 98);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(61, 20);
+            this.numericUpDown4.TabIndex = 14;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(87, 160);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(78, 20);
+            this.textBox2.TabIndex = 15;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(87, 203);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(78, 20);
+            this.textBox3.TabIndex = 16;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(31, 163);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 13);
+            this.label18.TabIndex = 17;
+            this.label18.Text = "Seq1:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(31, 210);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 13);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Seq2:";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(185, 160);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(38, 20);
+            this.numericUpDown5.TabIndex = 19;
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.Location = new System.Drawing.Point(185, 204);
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(38, 20);
+            this.numericUpDown6.TabIndex = 20;
             // 
             // Editor
             // 
@@ -585,6 +710,11 @@
             this.groupBox1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,6 +768,18 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
 
