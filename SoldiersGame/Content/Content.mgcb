@@ -66,3 +66,9 @@
 #begin Levels/Test.xml
 /copy:Levels/Test.xml
 
+#begin Sprites/Comando.xml
+/copy:Sprites/Comando.xml
+
+#begin Sprites/Aleman.xml
+/copy:Sprites/Aleman.xml
+
