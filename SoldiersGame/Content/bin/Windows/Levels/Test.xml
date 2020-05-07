@@ -27,7 +27,7 @@
     </tiles>
   </terrain>
   <entities>
-	<entity name="Aleman1" x="200" y="200" z="1" value="0" dir="0" />
+	<entity name="Aleman2" x="200" y="200" z="1" value="0" dir="0" />
   </entities>
   <soldiers>
 	<soldier name="Comando" x="150" y="50" z="1" dir="0">

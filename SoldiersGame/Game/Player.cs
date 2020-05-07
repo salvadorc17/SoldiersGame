@@ -86,7 +86,7 @@ namespace SoldierTactics.Game
                        }
 
 
-            CurrentAnimation = Animations[0];
+                    CurrentAnimation = Animations[0];
                     Direction = Direction.Right;
                     Position = new Vector(X, Y);
                     Bounds = new Rectangle(X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);

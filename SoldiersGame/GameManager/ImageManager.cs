@@ -38,20 +38,28 @@ namespace SoldiersGame
             {
 
                 WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "GLOBAL" +
-                Path.DirectorySeparatorChar + "GLOBAL.WAD"));
+                Path.DirectorySeparatorChar + "GLOBAL.WAD", true));
 
                 WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "GLOBAL" +
-                Path.DirectorySeparatorChar + "CURSORES.WAD"));
+                Path.DirectorySeparatorChar + "CURSORES.WAD", true));
 
                 WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "GLOBAL" +
-                Path.DirectorySeparatorChar + "800X600.WAD"));
+                Path.DirectorySeparatorChar + "800X600.WAD", true));
 
             }
             //Map wad
             else if (id == 1)
             {
 
-                WADImages.Add(new WAD(Config.MAPDIR + Path.DirectorySeparatorChar + name));
+                WADImages.Add(new WAD(Config.MAPDIR + Path.DirectorySeparatorChar + name, true));
+
+
+            }
+            //Elem wad
+            else if (id == 2)
+            {
+
+                WADImages.Add(new WAD(Config.ELEMDIR + Path.DirectorySeparatorChar + name + ".WAD", true));
 
 
             }
@@ -82,6 +90,7 @@ namespace SoldiersGame
 
 
         }
+
 
         public static Texture2D ImageFromWADArchive(int id, int value)
         {

@@ -69,6 +69,6 @@
 #begin Sprites/Comando.xml
 /copy:Sprites/Comando.xml
 
-#begin Sprites/Aleman.xml
-/copy:Sprites/Aleman.xml
+#begin Sprites/Aleman2.xml
+/copy:Sprites/Aleman2.xml
 

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SoldiersGame;
+using SoldierTactics.GameFormats;
 
 namespace SoldierTactics.Game
 {
@@ -90,11 +91,22 @@ namespace SoldierTactics.Game
                             break;
 
                         case EntityType.Enemy:
+                                {
 
+                                    WAD EntWAD = new WAD(entity.Name, false);
 
-                            //Enemies.Add(new Enemy(entity.ID, entity.Name, entity.X, entity.Y, entity.Route, entity.RType, content));
+                                   if (!ImageManager.WADImages.Contains(EntWAD))
+                                        {
 
-                            break;
+                                            WadNumber = ImageManager.WADImages.Count;
+
+                                            ImageManager.LoadWad(2, entity.Name);
+
+                                        }
+
+                                    Enemies.Add(new Enemy(entity.ID, entity.Name, entity.X, entity.Y, false, RouteType.None, content));
+                                }
+                                break;
 
                     }
                  }

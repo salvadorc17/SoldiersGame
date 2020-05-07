@@ -4,6 +4,9 @@ using SoldierTactics.Engine;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System.IO;
+using System.Xml.Serialization;
+using SoldiersGame;
 
 namespace SoldierTactics.Game
 {
@@ -12,7 +15,9 @@ namespace SoldierTactics.Game
 
         public int State;
         public Direction Direction;
-        public Animation[] Animations;
+        public SpriteTable SpriteTable;
+
+        public List<Animation> Animations;
         public Animation CurrentAnimation;
         public Animation Effect;
         public Rectangle Bounds;
@@ -38,7 +43,7 @@ namespace SoldierTactics.Game
             RType = RouteType.None;
 
 
-            Animations = new Animation[10];
+            Animations = new List<Animation>();
             ViewField = new Point[4];
 
             if (route == true)
@@ -55,9 +60,17 @@ namespace SoldierTactics.Game
                      }
 
                  State = 1;
-                 
 
-                 Load(content);
+                XmlSerializer ax = new XmlSerializer(typeof(SpriteTable));
+
+            using (Stream file = TitleContainer.OpenStream("Content/Sprites/" + name + ".xml"))
+            {
+                SpriteTable = (SpriteTable)ax.Deserialize(file);
+
+            }
+
+
+            Load(content);
                  
 
              }
@@ -65,7 +78,26 @@ namespace SoldierTactics.Game
          public void Load(ContentManager content)
             {
 
-                if (Animations != null)
+            List<Sprite> Sprites;
+           
+
+            for (int i = 0; i < SpriteTable.Sequences.Count; i++)
+            {
+                if (SpriteTable.Sequences[i].Frames.Count > 0)
+                {
+                    Sprites = new List<Sprite>();
+
+                    foreach (Frame frame in SpriteTable.Sequences[i].Frames)
+                        Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID, frame.Name)));
+
+                    Animations.Add(new Animation(Sprites, SpriteTable.Sequences[i].Speed,
+                    SpriteTable.Sequences[i].Frames.Count, SpriteTable.Sequences[i].Type == 1 ? true : false));
+                }
+
+
+            }
+
+            if (Animations != null)
                      {
 
                     
