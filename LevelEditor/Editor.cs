@@ -450,7 +450,7 @@ namespace LevelEditor
 
                 file = Paths[id];
 
-                WADFile = new WAD(file);
+                WADFile = new WAD(file, true);
 
                 foreach (WADImage img in WADFile.Images)
                     listBox2.Items.Add(img.Name);

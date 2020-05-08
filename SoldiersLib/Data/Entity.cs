@@ -42,7 +42,7 @@ namespace SoldierTactics.Game
             EntityType type = EntityType.None;
 
 
-            if (Name.Contains("ENEMY"))
+            if (Name.Contains("Aleman"))
                 type = EntityType.Enemy;
 
 

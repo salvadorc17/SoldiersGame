@@ -48,18 +48,23 @@ namespace SoldierTactics.GameFormats
          */
 
 
-        public WAD(string path)
+        public WAD(string path, bool preload)
         {
             Folder = path;
 
             Name = Path.GetFileName(path);
 
-            if (Folder != null)
-                Extract();
-
+            if (preload)
+                Load();
 
         }
 
+        public void Load()
+        {
+            if (Folder != null)
+                Extract();
+
+        }     
 
         public void Extract()
         {
