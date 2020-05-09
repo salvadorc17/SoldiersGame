@@ -22,42 +22,29 @@ namespace SoldierTactics.Game
         public Animation Effect;
         public Rectangle Bounds;
         public Sound DieSound;       
-        public Route Path;
+        public Route Route;
         public Vector Position;
         public Point[] ViewField;
         public bool MoveRoute, Alive;
         public EntityType Type { get; set; }
-        public bool Route { get; set; }
-        public RouteType RType { get; set; }
+ 
 
-        public Enemy(int id, string name, int x, int y, bool route, RouteType type, ContentManager content)
+
+        public Enemy(int id, string name, int x, int y, ContentManager content)
              {
                  ID = id;
                  Name = name;
                  X = x;
                  Y = y;
                  Position = new Vector(x, y);
-                 MoveRoute = route;
-                 Alive = true;
             Type = EntityType.None;
-            RType = RouteType.None;
+            Alive = true;
 
 
             Animations = new List<Animation>();
             ViewField = new Point[4];
 
-            if (route == true)
-                      {
-                    Path = new Route(X, Y, X + 200, Y + 200, type);
-                    Path.Enable(true);
-
-                      }
-                 else if (route == false)
-                     {
-                    Path = new Route(X, Y, X, Y, RouteType.None);
-                    Path.Enable(false);
-                 
-                     }
+           
 
                  State = 1;
 
@@ -75,7 +62,40 @@ namespace SoldierTactics.Game
 
              }
 
-         public void Load(ContentManager content)
+        public void SetRoute(bool route, RouteType type)
+        {
+
+
+            MoveRoute = route;
+            
+
+            if (route == true)
+                {
+
+
+                    if (type == RouteType.Horizontal)
+                    {
+                         Route = new Route(X, Y, X + 200, Y, type);
+                         Route.Enable(true);
+                    }
+                    else if (type == RouteType.Vertical)
+                    {
+                        Route = new Route(X, Y, X, Y + 200, type);
+                        Route.Enable(true);
+                    }
+
+                }
+                 else if (route == false)
+                     {
+                        Route = new Route(X, Y, X, Y, RouteType.None);
+                        Route.Enable(false);
+                 
+                     }
+
+
+        }
+
+        public void Load(ContentManager content)
             {
 
             List<Sprite> Sprites;
@@ -139,27 +159,27 @@ namespace SoldierTactics.Game
                  if (MoveRoute && Alive)
                       {
 
-                     switch (Path.Type)
+                     switch (Route.Type)
                       {
 
                          case RouteType.Horizontal:
 
-                          if (X >= Path.XF)
+                          if (X >= Route.XF)
                               State = 2;
 
-                          if (X < Path.X)
+                          if (X < Route.X)
                               State = 1;
                      
                           if (State == 1)
                               {
                                  CurrentAnimation = Animations[1];
-                                 
-                                 X += 5;
+                                CurrentAnimation.IsFliped = false;
+                                X += 5;
                               }
                           else if (State == 2)
                               {
-                                  CurrentAnimation = Animations[2];
-                                  //CurrentAnimation.Update();
+                                  CurrentAnimation = Animations[1];
+                                  CurrentAnimation.IsFliped = true;
                                   X -= 5;
                               }
 
@@ -168,10 +188,10 @@ namespace SoldierTactics.Game
 
                          case RouteType.Vertical:
 
-                             if (Y >= Path.YF)
+                             if (Y >= Route.YF)
                               State = 2;
 
-                          if (Y < Path.Y)
+                          if (Y < Route.Y)
                               State = 1;
                      
                           if (State == 1)
@@ -212,7 +232,7 @@ namespace SoldierTactics.Game
          public void Draw()
          {
              if (CurrentAnimation != null)
-                 CurrentAnimation.Draw( X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);
+                 CurrentAnimation.Draw( X, Y, CurrentAnimation.CurrentSprite.Width, CurrentAnimation.CurrentSprite.Height);
 
              if (Alive == false && Effect.isEnabled)
              {

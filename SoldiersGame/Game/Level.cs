@@ -14,7 +14,7 @@ namespace SoldierTactics.Game
 {
     public class Level
     {
-        public int ID, WadNumber;
+        public int ID, WadNumber, Entities;
         public string Name;
         public bool Debug;
         public List<Sprite> Tiles;
@@ -32,8 +32,8 @@ namespace SoldierTactics.Game
 
         public Level(int id, string name, ContentManager content)
              {
-
-                 ID = id;
+                Entities = 0;
+                ID = id;
                  Name = name;
                  XmlSerializer ax = new XmlSerializer(typeof(Map));
 
@@ -104,11 +104,16 @@ namespace SoldierTactics.Game
 
                                         }
 
-                                    Enemies.Add(new Enemy(entity.ID, entity.Name, entity.X, entity.Y, false, RouteType.None, content));
+                                    Enemies.Add(new Enemy(WadNumber, entity.Name, entity.X, entity.Y, content));
+
+                                    Enemies[Entities].SetRoute(true, RouteType.Horizontal);
+
                                 }
                                 break;
 
-                    }
+                        }
+
+                        Entities++;
                  }
 
                 foreach (Soldier soldier in Map.Soldiers)
@@ -117,7 +122,7 @@ namespace SoldierTactics.Game
                     WadNumber = ImageManager.WADImages.Count;
 
                     ImageManager.LoadWad(2, soldier.Name);
-                    Player = new Game.Player(WadNumber, soldier.Name, "Player" + WadNumber, soldier.X, soldier.Y, 45, content);
+                    Player = new Player(WadNumber, soldier.Name, "Player" + WadNumber, soldier.X, soldier.Y, 45, content);
 
                 }
             }

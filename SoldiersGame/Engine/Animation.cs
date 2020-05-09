@@ -114,12 +114,47 @@ namespace SoldierTactics.Engine
         public void Update(GameTime gameTime)
         {
 
-            
+
+            if (time < FrameTime)
+            {
+
+                for (int i = 1; i <= 30; i++)
+                {
+                    if (i == 30)
+                    {
+                        time++;
+
+                        if (time == FrameTime)
+                            m_frameIndex += 1;
+
+                    }
+                }
+                if (m_frameIndex == m_framecount)
+                {
+                    m_frameIndex = 0;
+                    
+                }
+
+            }
+            else
+            {
+
+                time = 0;
+
+            }
+
+
+
+
+        }
+
+        public void UpdateFrame(GameTime gametime)
+        {
+
             DateTime startTime = new DateTime();
             TimeSpan elapsedTime = new TimeSpan();
-            
 
-            elapsedTime = DateTime.Now + gameTime.ElapsedGameTime - startTime;
+            elapsedTime = DateTime.Now + gametime.ElapsedGameTime - startTime;
 
             // Process passing time.
             time += Convert.ToSingle(elapsedTime.Seconds);
@@ -143,7 +178,6 @@ namespace SoldierTactics.Engine
                     isEnabled = false;
                 }
             }
-
 
         }
 

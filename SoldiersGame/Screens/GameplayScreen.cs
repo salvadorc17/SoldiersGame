@@ -226,7 +226,7 @@ namespace SoldierTactics
 
             // Draw time remaining. Uses modulo division to cause blinking when the
             // er is running out of time.
-            string timeString = "TIME: "; //+ Maze.TimeRemaining.Minutes.ToString("00") + ":" + Maze.TimeRemaining.Seconds.ToString("00");
+            string timeString = "COORDS: " + "X: " + MouseState.X + " Y: " + MouseState.Y;
             Color timeColor = Color.DarkRed;
            
             DrawShadowedString(hudFont, timeString, hudLocation, timeColor);
@@ -280,8 +280,8 @@ namespace SoldierTactics
 
         private void DrawShadowedString(SpriteFont font, string value, Vector2 position, Color color__1)
         {
-            ScreenManager.SpriteBatch.DrawString(font, value, position + new Vector2(1f, 1f), Color.Black);
-            ScreenManager.SpriteBatch.DrawString(font, value, position, color__1);
+            ScreenManager.SpriteBatch.DrawString(font, value, position + Camera.Position, Color.Black);
+            ScreenManager.SpriteBatch.DrawString(font, value, position + Camera.Position, color__1);
         }
     }
 }
