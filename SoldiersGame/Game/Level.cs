@@ -166,28 +166,56 @@ namespace SoldierTactics.Game
                     if (Input.IsKeyDown(Keys.Right))
                     {
 
-                        Player.RightDown = true;
-                        Player.LeftDown = false;
+                        Player.RightPress = true;
+                        Player.LeftPress = false;
+                        Player.UpPress = false;
+                        Player.DownPress = false;
+
                         Player.State = 1;
 
 
                     }
-
-
                     else if (Input.IsKeyDown(Keys.Left))
                     {
 
-                        Player.LeftDown = true;
-                        Player.RightDown = false;
+                        Player.LeftPress = true;
+                        Player.RightPress = false;
+                        Player.UpPress = false;
+                        Player.DownPress = false;
+                        Player.State = 1;
+
+
+                    }
+                    else if (Input.IsKeyDown(Keys.Up))
+                    {
+
+                        Player.LeftPress = false;
+                        Player.RightPress = false;
+                        Player.UpPress = true;
+                        Player.DownPress = false;
+                        Player.State = 1;
+
+
+                    }
+                    else if (Input.IsKeyDown(Keys.Down))
+                    {
+
+                        Player.LeftPress = false;
+                        Player.RightPress = false;
+                        Player.UpPress = false;
+                        Player.DownPress = true;
                         Player.State = 1;
 
 
                     }
 
+
                     else
                     {
-                        Player.LeftDown = false;
-                        Player.RightDown = false;
+                        Player.RightPress = false;
+                        Player.LeftPress = false;
+                        Player.DownPress = false;
+                        Player.UpPress = false;
 
                         Player.State = 0;
 

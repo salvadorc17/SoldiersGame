@@ -11,7 +11,7 @@
       </frames>
     </sequence>
     <sequence>
-      <name>Walk</name>
+      <name>WalkSide</name>
       <type>0</type>
       <speed>3</speed>
       <frames>
@@ -21,6 +21,32 @@
 		<frame name="COMA0003" x="0" y="0" />
 		<frame name="COMA0004" x="0" y="0" />
 		<frame name="COMA0005" x="0" y="0" />
+      </frames>
+    </sequence>
+	<sequence>
+      <name>WalkUp</name>
+      <type>0</type>
+      <speed>3</speed>
+      <frames>
+        <frame name="COMA0024" x="0" y="0" />
+		<frame name="COMA0025" x="0" y="0" />
+		<frame name="COMA0026" x="0" y="0" />
+		<frame name="COMA0027" x="0" y="0" />
+		<frame name="COMA0028" x="0" y="0" />
+		<frame name="COMA0029" x="0" y="0" />
+      </frames>
+    </sequence>
+	<sequence>
+      <name>WalkDown</name>
+      <type>0</type>
+      <speed>3</speed>
+      <frames>
+        <frame name="COMA0017" x="0" y="0" />
+		<frame name="COMA0018" x="0" y="0" />
+		<frame name="COMA0019" x="0" y="0" />
+		<frame name="COMA0020" x="0" y="0" />
+		<frame name="COMA0021" x="0" y="0" />
+		<frame name="COMA0022" x="0" y="0" />
       </frames>
     </sequence>
   </sequences>

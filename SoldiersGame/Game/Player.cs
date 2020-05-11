@@ -17,7 +17,7 @@ namespace SoldierTactics.Game
         public string Class;
         public int State, Anim;
         public Direction Direction;
-        public bool Action, LeftDown, RightDown;
+        public bool Action, LeftPress, RightPress, UpPress, DownPress;
         public SpriteTable SpriteTable;
         public Sprite Face, Weapon, Cursor;
         public List<Animation> Animations;
@@ -108,7 +108,7 @@ namespace SoldierTactics.Game
 
                     case 1: //Move
                         //Cursor = MoveCursor;
-                        if (RightDown == true)
+                        if (RightPress == true)
                         {
 
                             //P1 Move right
@@ -117,14 +117,31 @@ namespace SoldierTactics.Game
                             X += 3;
 
                         }
-
-                        else if (LeftDown == true)
+                        else if (LeftPress == true)
                         {
 
                             //P1 Move left
                             CurrentAnimation = Animations[1];
                             CurrentAnimation.IsFliped = true;
                             X -= 3;
+
+                        }
+                        else if (UpPress == true)
+                        {
+
+                            //P1 Move up
+                            CurrentAnimation = Animations[2];
+                            CurrentAnimation.IsFliped = false;
+                            Y -= 3;
+
+                        }
+                        else if (DownPress == true)
+                        {
+
+                            //P1 Move down
+                            CurrentAnimation = Animations[3];
+                            CurrentAnimation.IsFliped = false;
+                            Y += 3;
 
                         }
 
