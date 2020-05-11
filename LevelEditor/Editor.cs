@@ -347,6 +347,32 @@ namespace LevelEditor
                + textBox1.Text + ".xml", SpriteTable);
         }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox3.Items.Clear();
+
+
+            int id = comboBox2.SelectedIndex;
+
+            //Soldier entity
+            if (id == 0)
+            {
+
+                comboBox3.Items.Add("Comando");
+                comboBox3.Items.Add("Sniper");
+
+            }
+            //Enemy entity
+            else if (id == 1)
+            {
+
+                comboBox3.Items.Add("Aleman");
+                comboBox3.Items.Add("Aleman2");
+
+            }
+
+        }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
