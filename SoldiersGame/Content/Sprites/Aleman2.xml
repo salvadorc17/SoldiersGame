@@ -7,11 +7,11 @@
       <type>0</type>
       <speed>1</speed>
       <frames>
-        <frame name="COMA0000" x="0" y="0" />
+        <frame name="ALAN0000" x="0" y="0" />
       </frames>
     </sequence>
     <sequence>
-      <name>Walk</name>
+      <name>WalkSide</name>
       <type>0</type>
       <speed>3</speed>
       <frames>
@@ -21,6 +21,32 @@
 		<frame name="ALAN0003" x="0" y="0" />
 		<frame name="ALAN0004" x="0" y="0" />
 		<frame name="ALAN0005" x="0" y="0" />
+      </frames>
+    </sequence>
+	<sequence>
+      <name>WalkUp</name>
+      <type>0</type>
+      <speed>3</speed>
+      <frames>
+        <frame name="ALAN0024" x="0" y="0" />
+		<frame name="ALAN0025" x="0" y="0" />
+		<frame name="ALAN0026" x="0" y="0" />
+		<frame name="ALAN0027" x="0" y="0" />
+		<frame name="ALAN0028" x="0" y="0" />
+		<frame name="ALAN0029" x="0" y="0" />
+      </frames>
+    </sequence>
+	<sequence>
+      <name>WalkDown</name>
+      <type>0</type>
+      <speed>3</speed>
+      <frames>
+        <frame name="ALAN0016" x="0" y="0" />
+		<frame name="ALAN0017" x="0" y="0" />
+		<frame name="ALAN0018" x="0" y="0" />
+		<frame name="ALAN0019" x="0" y="0" />
+		<frame name="ALAN0020" x="0" y="0" />
+		<frame name="ALAN0021" x="0" y="0" />
       </frames>
     </sequence>
   </sequences>

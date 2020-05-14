@@ -106,7 +106,7 @@ namespace SoldierTactics.Game
 
                                     Enemies.Add(new Enemy(WadNumber, entity.Name, entity.X, entity.Y, content));
 
-                                    Enemies[Entities].SetRoute(true, RouteType.Horizontal);
+                                    Enemies[Entities].SetRoute(true, entity.Dir == 0 ? RouteType.Horizontal: RouteType.Vertical);
 
                                 }
                                 break;

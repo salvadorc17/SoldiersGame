@@ -196,14 +196,14 @@ namespace SoldierTactics.Game
                      
                           if (State == 1)
                               {
-                                 CurrentAnimation = Animations[4];
-                                 //CurrentAnimation.Update();
+                                 CurrentAnimation = Animations[3];
+                                 
                                  Y += 5;
                               }
                           else if (State == 2)
                               {
-                                  CurrentAnimation = Animations[3];
-                                  //CurrentAnimation.Update();
+                                  CurrentAnimation = Animations[2];
+                                 
                                   Y -= 5;
                               }
 
