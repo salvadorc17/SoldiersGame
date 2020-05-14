@@ -260,6 +260,10 @@ namespace SoldierTactics
                 ScreenManager.SpriteBatch.Draw(UI.Backpack, new Rectangle((int)Camera.Position.X + 800 - UI.Backpack.Width, (int)Camera.Position.Y + 600 - UI.Backpack.Height,
                     UI.Backpack.Width, UI.Backpack.Height), Color.White);
 
+            if (Level.Player != null && UI.Marco != null)
+                ScreenManager.SpriteBatch.Draw(UI.Marco, new Rectangle((int)Camera.Position.X, (int)Camera.Position.Y + 5,
+                    UI.Marco.Width, UI.Marco.Height), Color.White);
+
             // Determine the status overlay message to show.
             Texture2D status = null;
 
@@ -274,7 +278,9 @@ namespace SoldierTactics
                 Vector2 statusSize = new Vector2(status.Width, status.Height);
                 spriteb.Draw(status, center - statusSize / 2, Color.White);
             }
-            
+
+            if (Level != null)
+                Level.PostDraw((int)Camera.Position.X, (int)Camera.Position.Y);
 
         }
 

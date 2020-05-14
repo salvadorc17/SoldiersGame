@@ -18,10 +18,9 @@ namespace SoldierTactics.Game
         public int State, Anim;
         public Direction Direction;
         public bool Action, LeftPress, RightPress, UpPress, DownPress;
-        public SpriteTable SpriteTable;
-        public Sprite Face, Weapon, Cursor;
-        public List<Animation> Animations;
-        public Animation CurrentAnimation, Effect;
+        public SpriteTable SpriteTable, CaraTable;
+        public List<Animation> Animations, ExtraAnimations;
+        public Animation CurrentAnimation, FaceAnimation, Effect;
         public Rectangle Bounds;
         public Vector Position;
         public FieldView FieldView;
@@ -39,6 +38,7 @@ namespace SoldierTactics.Game
                 Y = y;
 
                 Animations = new List<Animation>();
+                ExtraAnimations = new List<Animation>();
 
                 XmlSerializer ax = new XmlSerializer(typeof(SpriteTable));
 
@@ -53,6 +53,12 @@ namespace SoldierTactics.Game
 
                 }
 
+                using (Stream file = TitleContainer.OpenStream("Content/Interface/" + name + ".xml"))
+                {
+                    CaraTable = (SpriteTable)ax.Deserialize(file);
+
+                }
+            
 
                 Load(content);
 
@@ -64,9 +70,7 @@ namespace SoldierTactics.Game
             {
 
                     List<Sprite> Sprites;
-                    //Face = Image.FromFile(Config.SPRITEDIR + Class + "/face.png");
-                    //Weapon = Image.FromFile(Config.SPRITEDIR + Class + "/rifle.png");
-                    //Cursor = Image.FromFile(Config.SPRITEDIR + Class + "/aim.png");
+                    
 
 
                     for (int i = 0; i < SpriteTable.Sequences.Count; i++)
@@ -85,8 +89,24 @@ namespace SoldierTactics.Game
 
                        }
 
+            for (int i = 0; i < CaraTable.Sequences.Count; i++)
+            {
+                if (CaraTable.Sequences[i].Frames.Count > 0)
+                {
+                    Sprites = new List<Sprite>();
 
-                    CurrentAnimation = Animations[0];
+                    foreach (Frame frame in CaraTable.Sequences[i].Frames)
+                        Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID + 1, frame.Name)));
+
+                    ExtraAnimations.Add(new Animation(Sprites, CaraTable.Sequences[i].Speed,
+                    CaraTable.Sequences[i].Frames.Count, CaraTable.Sequences[i].Type == 1 ? true : false));
+                }
+
+
+            }
+
+            FaceAnimation = ExtraAnimations[0];
+            CurrentAnimation = Animations[0];
                     Direction = Direction.Right;
                     Position = new Vector(X, Y);
                     Bounds = new Rectangle(X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);
@@ -182,13 +202,18 @@ namespace SoldierTactics.Game
             if (CurrentAnimation != null)
                 CurrentAnimation.Draw( X, Y, CurrentAnimation.CurrentSprite.Width, CurrentAnimation.CurrentSprite.Height);
 
+
             if (Action == true && Effect.isEnabled)
                 Effect.Draw( X, Y, Effect.FrameWidth, Effect.FrameHeight);
 
         }
 
+        public void PostDraw(int x, int y)
+        {
+            if (FaceAnimation != null)
+                FaceAnimation.Draw(x + 0, y + 5, FaceAnimation.CurrentSprite.Width, FaceAnimation.CurrentSprite.Height);
 
-
+        }
 
     }
 

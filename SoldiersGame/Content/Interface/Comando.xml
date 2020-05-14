@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spritetable xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Comando</name>
+  <sequences>
+    <sequence>
+      <name>Select</name>
+      <type>0</type>
+      <speed>1</speed>
+      <frames>
+        <frame name="COM0001" x="0" y="0" />
+		<frame name="COM0002" x="0" y="0" />
+		<frame name="COM0003" x="0" y="0" />
+		<frame name="COM0004" x="0" y="0" />
+		<frame name="COM0005" x="0" y="0" />
+		<frame name="COM0006" x="0" y="0" />
+      </frames>
+    </sequence>
+    <sequence>
+      <name>Deselect</name>
+      <type>0</type>
+      <speed>1</speed>
+      <frames>
+        <frame name="COM0006" x="0" y="0" />
+		<frame name="COM0005" x="0" y="0" />
+		<frame name="COM0004" x="0" y="0" />
+		<frame name="COM0003" x="0" y="0" />
+		<frame name="COM0002" x="0" y="0" />
+		<frame name="COM0001" x="0" y="0" />
+      </frames>
+    </sequence>
+  </sequences>
+</spritetable>

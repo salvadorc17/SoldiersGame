@@ -72,3 +72,6 @@
 #begin Sprites/Aleman2.xml
 /copy:Sprites/Aleman2.xml
 
+#begin Interface/Comando.xml
+/copy:Interface/Comando.xml
+

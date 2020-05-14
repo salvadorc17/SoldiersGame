@@ -122,6 +122,7 @@ namespace SoldierTactics.Game
                     WadNumber = ImageManager.WADImages.Count;
 
                     ImageManager.LoadWad(2, soldier.Name);
+                    ImageManager.LoadWad(3, soldier.Name);
                     Player = new Player(WadNumber, soldier.Name, "Player" + WadNumber, soldier.X, soldier.Y, 45, content);
 
                 }
@@ -312,6 +313,15 @@ namespace SoldierTactics.Game
 
             if (Player != null)
                 Player.Draw();
+
+        }
+
+        public void PostDraw(int x, int y)
+        {
+
+            if (Player != null)
+                Player.PostDraw(x,y);
+
 
         }
 
