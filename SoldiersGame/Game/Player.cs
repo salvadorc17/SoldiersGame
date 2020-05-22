@@ -181,7 +181,7 @@ namespace SoldierTactics.Game
                     Position.Update(X, Y);
                     Bounds = new Rectangle(X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);
                     CurrentAnimation.Update(gameTime);
-
+                    
                     FieldView.SetPoints((int)Position.X + CurrentAnimation.FrameWidth, (int)Position.Y);
 
 
@@ -211,7 +211,7 @@ namespace SoldierTactics.Game
         public void PostDraw(int x, int y)
         {
             if (FaceAnimation != null)
-                FaceAnimation.Draw(x + 0, y + 5, FaceAnimation.CurrentSprite.Width, FaceAnimation.CurrentSprite.Height);
+                FaceAnimation.Draw(x, y, FaceAnimation.CurrentSprite.Width, FaceAnimation.CurrentSprite.Height);
 
         }
 

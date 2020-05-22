@@ -34,7 +34,8 @@ namespace SoldierTactics
 
 
             UI = new UI();
-            UI.Cursor = ImageManager.ImageFromWADArchive(1, "C_FLECHA");
+            UI.Load();
+            UI.Cursor = UI.GetCursor(0);
 
         }
 

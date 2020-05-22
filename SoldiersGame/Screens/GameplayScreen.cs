@@ -50,7 +50,7 @@ namespace SoldierTactics
 
             screenManager.Game.ResetElapsedTime();
             UI = ui;
-            UI.Load();
+            //UI.Load();
         }
 
 
@@ -261,7 +261,7 @@ namespace SoldierTactics
                     UI.Backpack.Width, UI.Backpack.Height), Color.White);
 
             if (Level.Player != null && UI.Marco != null)
-                ScreenManager.SpriteBatch.Draw(UI.Marco, new Rectangle((int)Camera.Position.X, (int)Camera.Position.Y + 5,
+                ScreenManager.SpriteBatch.Draw(UI.Marco, new Rectangle((int)Camera.Position.X, (int)Camera.Position.Y,
                     UI.Marco.Width, UI.Marco.Height), Color.White);
 
             // Determine the status overlay message to show.
@@ -271,6 +271,9 @@ namespace SoldierTactics
                 ScreenManager.SpriteBatch.Draw(UI.Cursor, new Rectangle(MouseState.X, MouseState.Y,
                     UI.Cursor.Width, UI.Cursor.Height), Color.White);
 
+            if (UI.Selection != null)
+                ScreenManager.SpriteBatch.Draw(UI.Selection, new Rectangle(MouseState.X, MouseState.Y,
+                    UI.Selection.Width, UI.Selection.Height), Color.White);
 
             if (status != null)
             {

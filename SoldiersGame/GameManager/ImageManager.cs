@@ -63,6 +63,15 @@ namespace SoldiersGame
 
 
             }
+            //Caras wad
+            else if (id == 3)
+            {
+
+                WADImages.Add(new WAD(Config.SYSDIR + Path.DirectorySeparatorChar + "CARAS" +
+                   Path.DirectorySeparatorChar + name + ".WAD", true));
+
+
+            }
 
         }
 
