@@ -373,6 +373,53 @@ namespace LevelEditor
 
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            string wad = listBox1.SelectedItem.ToString();
+
+            string wimg = listBox2.SelectedItem.ToString();
+
+            int img = listBox2.SelectedIndex;
+
+            if (WADFile != null && Map != null)
+            {
+
+                if (wad.Contains("ALEMAN"))
+                {
+                    Image bmp = pictureBox1.BackgroundImage;
+
+                    pictureBox4.BackgroundImage = bmp;
+
+                    label12.Text = label7.Text;
+
+
+                    Map.Entities.Add(new SoldierTactics.Game.Entity()
+                    {
+                        
+                        Name = "Aleman",
+
+                        X = (int)numericUpDown8.Value,
+
+                        Y = (int)numericUpDown7.Value,
+
+                        Z = (int)numericUpDown10.Value,
+
+                        Dir = (int)numericUpDown9.Value
+
+                    });
+
+                }
+
+            }
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
