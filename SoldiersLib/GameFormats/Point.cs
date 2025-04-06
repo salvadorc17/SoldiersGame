@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace SoldierTactics.GameFormats
 {
     public class Point
     {
+        public int ID { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Point(int x, int y)
+        public Point(int id, int x, int y)
         {
+            ID = id;
             X = x;
             Y = y;
         }
@@ -28,8 +27,9 @@ namespace SoldierTactics.GameFormats
     {
         public int Z { get; set; }
 
-        public Point3D(int x, int y, int z = 0) : base(x, y)
+        public Point3D(int id, int x, int y, int z = 0) : base(id, x, y)
         {
+            ID = id;
             X = x;
             Y = y;
             Z = z;
