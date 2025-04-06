@@ -194,9 +194,14 @@ namespace LevelEditor
         private void button4_Click(object sender, EventArgs e)
         {
 
-            string wad = listBox1.SelectedItem.ToString();
+            string wad = "";
+            string wimg = "";
 
-            string wimg = listBox2.SelectedItem.ToString();
+            if (listBox1.SelectedItem != null)
+             wad = listBox1.SelectedItem.ToString();
+
+            if (listBox2.SelectedItem != null)
+             wimg = listBox2.SelectedItem.ToString();
 
             int img = listBox2.SelectedIndex;
 
@@ -325,26 +330,37 @@ namespace LevelEditor
 
         private void button5_Click(object sender, EventArgs e)
         {
-            SpriteTable = new SpriteTable();
-            SpriteTable.Name = textBox1.Text;
-            SpriteTable.Sequences = new List<Sequence>();
-            if (numericUpDown4.Value >= 1)
+            if (textBox1.Text != "")
             {
-                SpriteTable.Sequences.Add(new Sequence());
-                SpriteTable.Sequences[0].Name = "Idle";
-                SpriteTable.Sequences[0].Frames = new List<Frame>();
-                SpriteTable.Sequences[0].Frames.Add(new Frame());
-            }
-            if (numericUpDown4.Value >= 2)
-            {
-                SpriteTable.Sequences.Add(new Sequence());
-                SpriteTable.Sequences[1].Name = "Walk";
-                SpriteTable.Sequences[1].Frames = new List<Frame>();
-                SpriteTable.Sequences[1].Frames.Add(new Frame());
-            }
+                SpriteTable = new SpriteTable();
+                SpriteTable.Name = textBox1.Text;
+                SpriteTable.Sequences = new List<Sequence>();
+                if (numericUpDown4.Value >= 1)
+                {
+                    SpriteTable.Sequences.Add(new Sequence());
+                    SpriteTable.Sequences[0].Name = "Idle";
+                    SpriteTable.Sequences[0].Frames = new List<Frame>();
+                    SpriteTable.Sequences[0].Frames.Add(new Frame());
+                }
+                if (numericUpDown4.Value >= 2)
+                {
+                    SpriteTable.Sequences.Add(new Sequence());
+                    SpriteTable.Sequences[1].Name = "Walk";
+                    SpriteTable.Sequences[1].Frames = new List<Frame>();
+                    SpriteTable.Sequences[1].Frames.Add(new Frame());
+                }
 
-            SoldierTactics.SpriteTable.Serialize(AppDomain.CurrentDomain.BaseDirectory + "/Content/Sprites/"
-               + textBox1.Text + ".xml", SpriteTable);
+                SoldierTactics.SpriteTable.Serialize(AppDomain.CurrentDomain.BaseDirectory + "/Content/Sprites/"
+                   + textBox1.Text + ".xml", SpriteTable);
+
+
+            }
+            else
+                MessageBox.Show("No animation name");
+
+
+
+
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
