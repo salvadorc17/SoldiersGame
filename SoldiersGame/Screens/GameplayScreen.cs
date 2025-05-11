@@ -125,14 +125,28 @@ namespace SoldierTactics
 
             HandleInput();
 
+            HandleCursor();
 
             if (Level != null)
                 Level.Update(gameTime);
-
+            
 
             Camera.Update();
 
         }
+
+        private void HandleCursor()
+        {
+            Rectangle PosRect = new Rectangle(0, 0, UI.Cursor.Width, UI.Cursor.Height);
+
+
+
+            if (PosRect.Contains(MouseState.X, MouseState.Y))
+                Level.Player.Selected = true;
+            else
+                Level.Player.Selected = false;
+        }
+
 
         private void HandleInput()
         {
@@ -246,7 +260,7 @@ namespace SoldierTactics
 
             if (UI.Bar2 != null)
                 ScreenManager.SpriteBatch.Draw(UI.Bar2, new Rectangle((int)Camera.Position.X + 800 - UI.Bar2.Width, (int)Camera.Position.Y + 600 - UI.Bar2.Height,
-                    UI.Bar2.Width, UI.Bar2.Height), Color.White);
+                  UI.Bar2.Width, UI.Bar2.Height), Color.White);
 
             if (UI.Eye != null)
                 ScreenManager.SpriteBatch.Draw(UI.Eye, new Rectangle((int)Camera.Position.X + 800 - UI.Eye.Width, (int)Camera.Position.Y,
