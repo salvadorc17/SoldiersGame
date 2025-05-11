@@ -17,7 +17,7 @@ namespace SoldierTactics.Game
         public string Class;
         public int State, Anim;
         public Direction Direction;
-        public bool Action, LeftPress, RightPress, UpPress, DownPress;
+        public bool Action, LeftPress, RightPress, UpPress, DownPress, Selected;
         public SpriteTable SpriteTable, CaraTable;
         public List<Animation> Animations, ExtraAnimations;
         public Animation CurrentAnimation, FaceAnimation, Effect;
@@ -195,7 +195,12 @@ namespace SoldierTactics.Game
 
                     }
 
-            }
+                if (Selected)
+                    FaceAnimation.Update(gameTime);
+                else
+                    FaceAnimation = ExtraAnimations[0];
+
+        }
 
         public void Draw()
         {
