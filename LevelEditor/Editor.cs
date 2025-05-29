@@ -392,9 +392,15 @@ namespace LevelEditor
         private void button6_Click(object sender, EventArgs e)
         {
 
-            string wad = listBox1.SelectedItem.ToString();
+            string wad = "";
 
-            string wimg = listBox2.SelectedItem.ToString();
+            if (listBox1.SelectedItem != null)
+                wad = listBox1.SelectedItem.ToString();
+
+            string wimg = "";
+
+            if (listBox2.SelectedItem != null)
+                wimg = listBox2.SelectedItem.ToString();
 
             int img = listBox2.SelectedIndex;
 
@@ -432,6 +438,31 @@ namespace LevelEditor
         }
 
         private void button7_Click(object sender, EventArgs e)
+        {
+
+            int id = listBox4.SelectedIndex;
+
+
+            if (WADFile != null && Map != null)
+            {
+
+                if (Map.Soldiers.Count > 0 && listBox4.Items.Count > 0)
+                {
+
+                    Map.Soldiers.RemoveAt(id);
+
+                    MapImages.RemoveAt(id);
+
+                    listBox4.Items.RemoveAt(id);
+
+                    EntityId = listBox4.Items.Count - 1;
+
+                }
+
+            }
+        }
+
+        private void numericUpDown8_ValueChanged(object sender, EventArgs e)
         {
 
         }

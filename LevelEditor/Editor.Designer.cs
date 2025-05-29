@@ -39,6 +39,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
@@ -101,9 +104,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -156,14 +156,14 @@
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -237,6 +237,34 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Entitiy";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(83, 155);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(33, 18);
+            this.button7.TabIndex = 16;
+            this.button7.Text = "-";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(46, 155);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 18);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "+";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(8, 174);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(108, 82);
+            this.listBox4.TabIndex = 16;
             // 
             // comboBox3
             // 
@@ -329,6 +357,7 @@
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown8.TabIndex = 18;
+            this.numericUpDown8.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
             // 
             // label23
             // 
@@ -567,7 +596,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 506);
+            this.tabPage2.Size = new System.Drawing.Size(776, 511);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Files Viewer";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -860,34 +889,6 @@
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(8, 174);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(108, 82);
-            this.listBox4.TabIndex = 16;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(46, 155);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(31, 18);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "+";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(83, 155);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(33, 18);
-            this.button7.TabIndex = 16;
-            this.button7.Text = "-";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Editor
             // 
