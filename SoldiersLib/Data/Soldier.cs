@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using SoldierTactics.Game;
 
 namespace SoldierTactics
 {
@@ -28,6 +29,23 @@ namespace SoldierTactics
 
         [XmlElement("inventory")]
         public Inventory Inventory { get; set; }
+
+        public EntityType GetEntityType()
+        {
+
+            EntityType type = EntityType.None;
+
+
+            if (Name.Contains("Comando"))
+                type = EntityType.Player;
+            else if (Name.Contains("Artific"))
+                type = EntityType.Player;
+
+
+            return type;
+
+
+        }
 
     }
 
