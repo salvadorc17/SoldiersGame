@@ -467,6 +467,13 @@ namespace LevelEditor
 
         }
 
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Files.Clear();
+            Paths.Clear();
+            MapImages.Clear();
+        }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
