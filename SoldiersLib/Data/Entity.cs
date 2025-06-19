@@ -44,7 +44,8 @@ namespace SoldierTactics.Game
 
             if (Name.Contains("Aleman"))
                 type = EntityType.Enemy;
-
+            else if (Name.Contains("Aleman2"))
+                type = EntityType.Enemy;
 
             return type;
 
