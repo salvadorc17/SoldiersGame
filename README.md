@@ -5,7 +5,7 @@ Monogame implementation of Commandos 1 game series written in C#, does requiere 
 
     -Windows
     MonoGame: 3.4 or higher
-    OpenTK 1.1
+    OpenAL 1.0
     
     -Linux
     OpenGL 3.0
