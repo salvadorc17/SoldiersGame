@@ -464,7 +464,20 @@ namespace LevelEditor
 
         private void numericUpDown8_ValueChanged(object sender, EventArgs e)
         {
+            int id = listBox3.SelectedIndex;
 
+
+            if (WADFile != null && Map != null)
+            {
+
+                if (Map.Soldiers.Count > 0 && id >= 0)
+                {
+
+                    Map.Soldiers[id].X = (short)numericUpDown8.Value;
+
+                }
+
+            }
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -472,6 +485,24 @@ namespace LevelEditor
             Files.Clear();
             Paths.Clear();
             MapImages.Clear();
+        }
+
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            int id = listBox3.SelectedIndex;
+
+
+            if (WADFile != null && Map != null)
+            {
+
+                if (Map.Soldiers.Count > 0 && id >= 0)
+                {
+
+                    Map.Soldiers[id].Y = (short)numericUpDown7.Value;
+
+                }
+
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
