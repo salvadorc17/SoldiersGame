@@ -40,7 +40,10 @@ namespace SoldierTactics
                 type = EntityType.Player;
             else if (Name.Contains("Artific"))
                 type = EntityType.Player;
-
+            else if (Name.Contains("Marine"))
+                type = EntityType.Player;
+            else if (Name.Contains("Sniper"))
+                type = EntityType.Player;
 
             return type;
 

@@ -64,6 +64,9 @@ namespace SoldierTactics
         [XmlAttribute("y")]
         public short Y { get; set; }
 
+        [XmlAttribute("z")]
+        public short Z { get; set; }
+
 
 
     }
