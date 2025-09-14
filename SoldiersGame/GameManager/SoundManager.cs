@@ -48,7 +48,7 @@ namespace SoldiersGame
             if (sounds.TryGetValue(name, out effect))
             {
                  //validates if an effect is being played 
-                if (currentSoundEffect != null)
+                if (currentSoundEffect != null && effect != null)
                 {
                     if (!overPlay)
                     {
@@ -88,15 +88,7 @@ namespace SoldiersGame
             }
             catch (Exception e)
             {
-#if ZUNE
-			//on the Zune we can go through the MediaLibrary to attempt
-			//to find a matching song name. this functionality doesn't
-			//exist on Windows or Xbox 360 at this time
-			MediaLibrary ml = new MediaLibrary();
-			foreach (Song song in ml.Songs)
-				if (song.Name == name)
-					currentSong = song;
-#endif
+
 
                 //if we didn't find the song, rethrow the exception
                 if (currentSong == null)
