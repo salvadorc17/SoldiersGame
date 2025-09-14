@@ -20,7 +20,7 @@ namespace SoldiersGame
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferWidth = Config.SCREEN_WIDTH;
             graphics.PreferredBackBufferHeight = Config.SCREEN_HEIGHT;
-
+            graphics.IsFullScreen = Config.FULL_SCREEN;
 
             screenManager = new ScreenManager(this, graphics, Services, Content);
             Components.Add(screenManager);
