@@ -28,6 +28,7 @@ namespace SoldierTactics.Game
                  Name = name;
                  X = x;
                  Y = y;
+                 State = 0;
                  Animations = new Animation[10];
                  Action = false;
                  //ActionSound = new Sound(1, SoundEngine.tankSound, false);
@@ -43,6 +44,7 @@ namespace SoldierTactics.Game
                      {
 
                          CurrentAnimation = Animations[1];
+                         Effect = Animations[10];
                          Direction = Direction.Right;
                          Position = new Vector(X, Y);
                          Bounds = new Rectangle(X, Y, CurrentAnimation.FrameWidth, CurrentAnimation.FrameHeight);
