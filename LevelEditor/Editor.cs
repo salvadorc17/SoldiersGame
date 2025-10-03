@@ -505,6 +505,14 @@ namespace LevelEditor
             }
         }
 
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = comboBox3.SelectedIndex;
+
+            if (id > 0)
+                Map.Entities.ElementAt(id);
+        }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
