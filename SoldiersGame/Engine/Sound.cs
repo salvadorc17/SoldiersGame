@@ -17,6 +17,7 @@ namespace SoldierTactics.Engine
 
         public Sound(int id, string path, bool loop)
         {
+            Stream buffer = File.Open(path, FileMode.Open);
 
             ID = id;
             Filepath = path;
