@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using Microsoft.Xna.Framework;
 using SoldierTactics.Game;
+
 
 namespace SoldierTactics
 {
@@ -48,6 +50,14 @@ namespace SoldierTactics
             return type;
 
 
+        }
+
+        public Vector2 GetPosition(int dir)
+        {
+
+            Z = dir;
+
+            return new Vector2(X, Y);
         }
 
     }
