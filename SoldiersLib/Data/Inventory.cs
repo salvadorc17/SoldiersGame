@@ -12,6 +12,12 @@ namespace SoldierTactics
         [XmlArrayItem("weapon")]
         public List<Weapon> Weapons { get; set; }
 
+        public Inventory()
+        {
+            Weapons = new List<Weapon>();
+
+        }
+
     }
 
 
