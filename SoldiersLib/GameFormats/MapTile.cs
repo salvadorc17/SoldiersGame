@@ -17,8 +17,8 @@ namespace SoldierTactics.GameFormats
 
     public class MapTile
     {
-        public Point Position { get; set; }
-        public Point Offset { get; set; }
+        public Point2D Position { get; set; }
+        public Point2D Offset { get; set; }
         public int Brightness { get; set; }
         public string SpriteName { get; set; }
         public int Width { get; set; }

@@ -22,7 +22,7 @@ namespace SoldierTactics.GameFormats
         public int Radio { get; set; }
         public byte[] ExtraInfo = new byte[8];
         public List<MapTile> Tiles = new List<MapTile>();
-        public List<Point> Vertices = new List<Point>();
+        public List<Point2D> Vertices = new List<Point2D>();
 
         /// <summary>
         /// Only used when type is Ramp

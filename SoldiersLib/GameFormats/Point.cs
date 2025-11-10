@@ -3,13 +3,13 @@
 
 namespace SoldierTactics.GameFormats
 {
-    public class Point
+    public class Point2D
     {
         public int ID { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Point(int id, int x, int y)
+        public Point2D(int id, int x, int y)
         {
             ID = id;
             X = x;
@@ -23,7 +23,7 @@ namespace SoldierTactics.GameFormats
 
     }
 
-    public class Point3D : Point
+    public class Point3D : Point2D
     {
         public int Z { get; set; }
 
