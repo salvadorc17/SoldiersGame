@@ -25,6 +25,16 @@ namespace LevelEditor
             return b;
         }
 
+      public static Rectangle GetBounds(Point point)
+        {
+            Rectangle rect = new Rectangle();
+
+            rect.X = point.X;
+            rect.Y = point.Y;
+
+            return rect;
+        }
+
 
     }
 }
