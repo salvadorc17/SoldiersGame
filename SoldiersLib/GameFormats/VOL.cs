@@ -228,11 +228,11 @@ namespace SoldierTactics.GameFormats
 
                     var tile = new MapTile
                     {
-                        Position = new Point((int)poly.Type, x, y),
+                        Position = new Point2D((int)poly.Type, x, y),
                         Brightness = b,
                         Height = h,
                         Width = w,
-                        Offset = new Point(0, ho, vo),
+                        Offset = new Point2D(0, ho, vo),
                         SpriteName = spl[7].Trim('"'),
                     };
 
@@ -264,7 +264,7 @@ namespace SoldierTactics.GameFormats
                     if (!int.TryParse(spl[0], out x)) throw new Exception("Invalid x value (line " + linecnt + ")");
                     if (!int.TryParse(spl[1], out y)) throw new Exception("Invalid y value (line " + linecnt + ")");
 
-                    poly.Vertices.Add(new Point((int)poly.Type,x, y));
+                    poly.Vertices.Add(new Point2D((int)poly.Type,x, y));
                 }
             }
 
