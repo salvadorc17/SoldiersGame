@@ -14,10 +14,11 @@ namespace SoldierTactics
 
     class BackgroundScreen : GameScreen
     {
-
+        
         private ContentManager content;
-
-        private Texture2D backgroundTexture;
+        public int backgroundScale = 0;
+        public string backgroundFile;
+        public Texture2D backgroundTexture;
         public BackgroundScreen()
         {
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
@@ -31,8 +32,10 @@ namespace SoldierTactics
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             }
 
+            backgroundFile = "MENU800.BMP";
+
             backgroundTexture = ImageManager.LoadTexture(ScreenManager.GraphicsDevice, Config.SYSDIR + Path.DirectorySeparatorChar + "MISC" +
-                Path.DirectorySeparatorChar + "MENU800.BMP");
+                Path.DirectorySeparatorChar + backgroundFile);
 
 
         }
@@ -49,6 +52,11 @@ namespace SoldierTactics
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, false);
+
+            if (backgroundScale == 1)
+                backgroundFile = "MENU800.BMP";
+            else if (backgroundScale == 2)
+                backgroundFile = "MENU1024.BMP";
         }
 
         public override void Draw(GameTime gameTime)
