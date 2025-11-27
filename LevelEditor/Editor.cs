@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using SoldierTactics;
 using SoldierTactics.GameFormats;
 using SoldiersGame;
+using SoldierTactics.Game;
 
 namespace LevelEditor
 {
@@ -25,6 +26,7 @@ namespace LevelEditor
         private int TerrainSelected, EntitySelected, TerrainId, EntityId;
 
         private Map Map;
+        private Entity SelEntity;
         private List<Bitmap> MapImages;
 
         private List<string> Files, Paths;
@@ -510,7 +512,20 @@ namespace LevelEditor
             int id = comboBox3.SelectedIndex;
 
             if (id > 0)
-                Map.Entities.ElementAt(id);
+                SelEntity = Map.Entities.ElementAt(id);
+        }
+
+        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = listBox4.SelectedIndex;
+
+            if (id >= 0)
+            {
+
+                SelEntity = Map.Entities.ElementAt(id);
+                comboBox3.SelectedIndex = id;
+            }
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
