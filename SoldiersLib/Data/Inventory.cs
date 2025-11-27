@@ -12,10 +12,13 @@ namespace SoldierTactics
         [XmlArrayItem("weapon")]
         public List<Weapon> Weapons { get; set; }
 
+        [XmlArrayItem("item")]
+        public List<Item> Items { get; set; }
+
         public Inventory()
         {
             Weapons = new List<Weapon>();
-
+            Items = new List<Item>();
         }
 
     }
@@ -31,6 +34,17 @@ namespace SoldierTactics
 
         [XmlAttribute("ammo")]
         public int Ammo { get; set; }
+
+
+    }
+
+    public class Item
+    {
+        [XmlAttribute("id")]
+        public int ID { get; set; }
+
+        [XmlAttribute("name")]
+        public string Name { get; set; }
 
 
     }
