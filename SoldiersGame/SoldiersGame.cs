@@ -36,8 +36,8 @@ namespace SoldiersGame
         protected override void Initialize()
         {
             ImageManager.InitWADs(GraphicsDevice);
-            ImageManager.LoadWad(0, "");
-
+            
+            SoundManager.Initialize(this);
             Config.Game = this;
 
             
@@ -56,7 +56,8 @@ namespace SoldiersGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            ImageManager.LoadWad(0, "");
+            SoundManager.LoadSound("menu.wav");
 
         }
 
