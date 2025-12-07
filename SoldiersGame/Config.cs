@@ -15,7 +15,7 @@ namespace SoldierTactics
             "ELEM";
         public static string MAPDIR = "DATOS" + Path.DirectorySeparatorChar + "RECURSOS" + Path.DirectorySeparatorChar +
             "BMPS" + Path.DirectorySeparatorChar + "MAP";
-
+        public static string MISDIR = "DATOS" + Path.DirectorySeparatorChar + "MISIONES";
         public static string MUSICDIR = "DATOS" + Path.DirectorySeparatorChar + "MUSICA";
         public static string SOUNDDIR = DATOSDIR + Path.DirectorySeparatorChar + "SONIDO" + Path.DirectorySeparatorChar + "WAVE";
         public static string BGDIR = GAMEDIR + Path.DirectorySeparatorChar + "Textures";
@@ -27,7 +27,7 @@ namespace SoldierTactics
         public static short SPRITE_SIZE = 32;
         public const short COLOR_FORMAT = 24;
         public const bool FULL_SCREEN = false;
-
+        public const bool DEBUG = false;
 
         public static SoldiersGame.SoldiersGame Game;
 
