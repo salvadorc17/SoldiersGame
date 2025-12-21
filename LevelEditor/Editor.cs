@@ -607,7 +607,8 @@ namespace LevelEditor
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            WADFile = null;
+            Map = null;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
