@@ -52,6 +52,12 @@ namespace SoldierTactics
 
         }
 
+        public EntityType GetType(string name)
+        {
+            Name = name;
+            return EntityType.Player;
+        }
+        
         public Vector2 GetPosition(int dir)
         {
 
