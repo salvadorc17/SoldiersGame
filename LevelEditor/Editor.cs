@@ -45,6 +45,8 @@ namespace LevelEditor
         private void Editor_Load(object sender, EventArgs e)
         {
 
+            Files = new List<string>();
+            Paths = new List<string>();
             Folder = AppDomain.CurrentDomain.BaseDirectory + "/DATOS";
             graphics = this.pictureBox2.CreateGraphics();
             bb = new Bitmap(640, 480);
@@ -643,3 +645,4 @@ namespace LevelEditor
         }
     }
 }
+
