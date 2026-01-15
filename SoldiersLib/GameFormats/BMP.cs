@@ -195,7 +195,11 @@ namespace SoldierTactics.GameFormats
             {
                 bmp = new BMP(data, index);
             }
-            catch { }
+            catch 
+            { 
+                Exception ex = new Exception
+            
+            }
             return bmp;
         }
     }
