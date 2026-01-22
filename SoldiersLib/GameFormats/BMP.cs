@@ -197,7 +197,7 @@ namespace SoldierTactics.GameFormats
             }
             catch 
             { 
-                Exception ex = new Exception
+                Exception ex = new Exception();
             
             }
             return bmp;
