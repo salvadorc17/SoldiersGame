@@ -15,7 +15,7 @@ namespace SoldierTactics.Game
        public Sound ObjectSound;
        public Rectangle Bounds;
        public Point Origin;
-       public bool Trigger;
+       public bool Trigger, Alive;
 
        public GameObject(int id, string name, int x, int y, ObjectType type, int frames, ContentManager content)
            {
@@ -25,6 +25,7 @@ namespace SoldierTactics.Game
                X = x;
                Y = y;
                OType = type;
+               Alive = true;
 
 
 
@@ -45,6 +46,8 @@ namespace SoldierTactics.Game
                    Effect.Update(gameTime);
                    Bounds = new Rectangle(X, Y, Effect.FrameWidth, Effect.FrameHeight);
                    }
+               else if (!Alive)
+                  Sprite = null;
 
            
 
