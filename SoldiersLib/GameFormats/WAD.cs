@@ -21,6 +21,8 @@ namespace SoldierTactics.GameFormats
             }
         }
 
+        private int numfiles;
+
         public int Files
         {
             get
@@ -126,6 +128,7 @@ namespace SoldierTactics.GameFormats
                         else
                             Trace.WriteLine("WAD: Warning! BMP image has invalid palette index");
                         images.Add(bmp);
+                        numfiles = images.Count();
                         index += bmp.RawDataSize;
                         continue;
                     }
