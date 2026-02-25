@@ -29,8 +29,12 @@ namespace LevelEditor
         {
             Rectangle rect = new Rectangle();
 
-            rect.X = point.X;
-            rect.Y = point.Y;
+            if (rect.Contains(point))
+               {
+
+                  rect.X = point.X;
+                  rect.Y = point.Y;
+               }
 
             return rect;
         }
