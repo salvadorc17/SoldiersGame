@@ -32,7 +32,8 @@ namespace SoldiersGame
             bool Exists = false;
 
             if (Directory.Exists(Config.DATOSDIR)
-                && Directory.Exists(Config.GAMEDIR)
+                && Directory.Exists(Config.SYSDIR)
+                && Directory.Exists(Config.MAPDIR )
                 && Directory.Exists(Config.SOUNDDIR)
             && Directory.Exists(Config.MUSICDIR))
                 Exists = true;
