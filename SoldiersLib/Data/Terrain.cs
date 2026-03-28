@@ -50,7 +50,8 @@ namespace SoldiersGame
         None = 0,
         Floor = 1,
         Wall = 2,
-        Water = 3
+        Water = 3,
+        Snow = 4
 
 
 
