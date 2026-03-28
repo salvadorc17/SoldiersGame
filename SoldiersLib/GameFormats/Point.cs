@@ -16,7 +16,7 @@ namespace SoldierTactics.GameFormats
             Y = y;
         }
 
-        public string ToString()
+        public abstract string ToString()
         {
             return "{" + X + ";" + Y + "}";
         }
