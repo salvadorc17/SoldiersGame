@@ -27,10 +27,10 @@ namespace SoldierTactics.Engine
 
         public void Update(double x, double y)
          {
-            if (X > 0)
+            if (x > 0)
              X = x;
 
-            if (Y > 0)
+            if (y > 0)
              Y = y;
           
 
