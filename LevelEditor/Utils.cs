@@ -39,6 +39,15 @@ namespace LevelEditor
             return rect;
         }
 
+      public static bool GetPoint(Point point)
+         {
 
+            if (point.X > 0 && point.Y > 0)
+               return true;
+
+            return false;
+
+
+         }
     }
 }
