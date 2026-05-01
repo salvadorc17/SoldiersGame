@@ -34,9 +34,11 @@ namespace LevelEditor
 
                   rect.X = point.X;
                   rect.Y = point.Y;
+
+                  return rect;
                }
 
-            return rect;
+            return new Rectangle(0,0,1,1);
         }
 
       public static bool GetPoint(Point point)
