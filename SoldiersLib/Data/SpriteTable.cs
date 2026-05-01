@@ -71,4 +71,11 @@ namespace SoldierTactics
 
     }
 
+    public enum FrameType
+    {
+        None = 0,
+        Normal = 1,
+        Inverted = 2
+    }
+
 }
