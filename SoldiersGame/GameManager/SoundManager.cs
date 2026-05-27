@@ -98,7 +98,16 @@ namespace SoldiersGame
         }
 
      
+        public static void LoadSong(string assetName)
+        {
+            //currentSong = Song.FromUri(assetName, new Uri(Config.MUSICDIR));
+            using (Stream str = File.Open(Config.MUSICDIR + Path.DirectorySeparatorChar + assetName, FileMode.Open))
+            {
+                sounds.Add(assetName, SoundEffect.FromStream(str));
 
+            }
+        }
+        
         /// <summary>
         /// Loads a sound for playing
         /// </summary>
