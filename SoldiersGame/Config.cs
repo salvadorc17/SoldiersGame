@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-namespace SoldierTactics
+namespace SoldiersGame
 {
    public static class Config
     {
