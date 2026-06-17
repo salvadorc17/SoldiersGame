@@ -29,7 +29,7 @@ namespace SoldiersGame
         public const bool FULL_SCREEN = false;
         public const bool DEBUG = false;
 
-        public static SoldiersGame.SoldiersGame Game;
+        public static SoldiersGame Game;
 
     }
 }
