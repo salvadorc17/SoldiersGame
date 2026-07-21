@@ -13,7 +13,8 @@ namespace SoldiersGame
         public static SoldiersGame Game;
         public static double ScreenWidth, ScaleWidth;
         public static double ScreenHeight, ScaleHeight;
-        public static bool DebugMode;
+        public static bool FPSCounter, DebugMode;
+        public static int FPS;
 
     }
 }
