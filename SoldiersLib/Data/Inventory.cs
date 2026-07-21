@@ -11,7 +11,8 @@ namespace SoldierTactics
         [XmlArray("weeapons")]
         [XmlArrayItem("weapon")]
         public List<Weapon> Weapons { get; set; }
-
+      
+        [XmlArray("items")]
         [XmlArrayItem("item")]
         public List<Item> Items { get; set; }
 
@@ -45,6 +46,9 @@ namespace SoldierTactics
 
         [XmlAttribute("name")]
         public string Name { get; set; }
+
+        [XmlAttribute("count")]
+        public int Count { get; set; }
 
 
     }
