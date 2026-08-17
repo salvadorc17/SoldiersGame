@@ -1,5 +1,5 @@
 # Soldiers-Monogame
-Monogame implementation of Commandos 1 game series written in C#, does requiere to have original game files.
+Monogame implementation of Commandos 1 game series written in C#, it does requiere to have original game files.
 
 # Prerequisites
 
