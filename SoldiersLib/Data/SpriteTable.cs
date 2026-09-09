@@ -48,7 +48,7 @@ namespace SoldierTactics
         [XmlArrayItem("frame")]
         public List<Frame> Frames { get; set; }
 
-       
+        public FrameType FrameType;
 
     }
 
@@ -77,5 +77,4 @@ namespace SoldierTactics
         Normal = 1,
         Inverted = 2
     }
-
 }
