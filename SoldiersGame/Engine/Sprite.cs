@@ -21,12 +21,13 @@ namespace SoldierTactics.Engine
         public int Height { get; set; }
         public int xOrigin { get; set; }
         public int yOrigin { get; set; }
+        public bool Inverted = false;
 
         public Sprite()
         {
         }
 
-        public Sprite(string path) 
+        public Sprite(string path, bool inverted) 
         {
             Name = path;
 
@@ -41,6 +42,7 @@ namespace SoldierTactics.Engine
             Height = Config.SPRITE_SIZE;
             xOrigin = 0;
             yOrigin = 0;
+            Inverted = inverted;
         }
 
 
@@ -59,16 +61,17 @@ namespace SoldierTactics.Engine
 
         }
 
-        public Sprite(Texture2D texture)
+        public Sprite(Texture2D texture, bool inverted)
         {
 
             Image = texture;
             Width = texture.Width;
             Height = texture.Height;
+            Inverted = inverted;
 
         }
 
-        public Sprite(string path, int width, int height)
+        public Sprite(string path, int width, int height, bool inverted)
         {
             Name = path;
             Stream file = File.Open(path, FileMode.Open);
@@ -81,6 +84,7 @@ namespace SoldierTactics.Engine
             Height = height;
             xOrigin = width / 2;
             yOrigin = height / 2;
+            Inverted = inverted;
         }
 
 
