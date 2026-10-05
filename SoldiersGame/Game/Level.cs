@@ -263,7 +263,7 @@ namespace SoldierTactics.Game
             {
 
                 sprite = new Sprite(
-                ImageManager.ImageFromWADArchive(WadNumber, Map.Terrain.Tiles[id].Value));
+                ImageManager.ImageFromWADArchive(WadNumber, Map.Terrain.Tiles[id].Value), false);
 
 
             }

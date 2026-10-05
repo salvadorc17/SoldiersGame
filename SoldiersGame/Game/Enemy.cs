@@ -108,7 +108,7 @@ namespace SoldierTactics.Game
                     Sprites = new List<Sprite>();
 
                     foreach (Frame frame in SpriteTable.Sequences[i].Frames)
-                        Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID, frame.Name)));
+                        Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID, frame.Name), false));
 
                     Animations.Add(new Animation(Sprites, SpriteTable.Sequences[i].Speed,
                     SpriteTable.Sequences[i].Frames.Count, SpriteTable.Sequences[i].Type == 1 ? true : false));
