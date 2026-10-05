@@ -80,7 +80,7 @@ namespace SoldierTactics.Game
                                 Sprites = new List<Sprite>();
 
                                 foreach (Frame frame in SpriteTable.Sequences[i].Frames)
-                                    Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID, frame.Name)));
+                                    Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID, frame.Name), false));
 
                                 Animations.Add(new Animation(Sprites, SpriteTable.Sequences[i].Speed,
                                 SpriteTable.Sequences[i].Frames.Count, SpriteTable.Sequences[i].Type == 1 ? true : false));
@@ -96,7 +96,7 @@ namespace SoldierTactics.Game
                     Sprites = new List<Sprite>();
 
                     foreach (Frame frame in CaraTable.Sequences[i].Frames)
-                        Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID + 1, frame.Name)));
+                        Sprites.Add(new Sprite(ImageManager.ImageFromWADArchive(ID + 1, frame.Name), false));
 
                     ExtraAnimations.Add(new Animation(Sprites, CaraTable.Sequences[i].Speed,
                     CaraTable.Sequences[i].Frames.Count, CaraTable.Sequences[i].Type == 1 ? true : false));
