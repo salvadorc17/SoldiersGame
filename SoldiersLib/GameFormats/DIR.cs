@@ -12,6 +12,9 @@ namespace SoldierTactics.GameFormats
 {
     public class DIR
     {
+
+        public string Path;
+
         struct DIR_ITEM
         {
             public string itemName;
@@ -21,6 +24,12 @@ namespace SoldierTactics.GameFormats
             public List<DIR_ITEM> children;
         }
 
+        public DIR(string path)
+        {
+
+            Path = path;
+
+        }
         /// <summary>
         /// Exports the WARGAME.DIR from Commandos.
         /// </summary>
