@@ -45,8 +45,6 @@ namespace LevelEditor
         private void Editor_Load(object sender, EventArgs e)
         {
 
-            Files = new List<string>();
-            Paths = new List<string>();
             Folder = AppDomain.CurrentDomain.BaseDirectory + "/DATOS";
             graphics = this.pictureBox2.CreateGraphics();
             bb = new Bitmap(640, 480);
@@ -530,6 +528,12 @@ namespace LevelEditor
 
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DIR dir = new DIR("WARGAME.DIR");
+            DIR.ExportDIR(dir.Path, "WARGAME");
+        }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -645,4 +649,3 @@ namespace LevelEditor
         }
     }
 }
-
